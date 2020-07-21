@@ -135,12 +135,8 @@ exclude_list = ['*.genbank', '*.fasta',
                 'pyqtdeploy', 'nno2stl', '*.autobreak']
 cn_packages = find_packages(exclude=exclude_list)
 
-install_requires = ['sip>=4.19.7',
-                    'PyQt5>=5.10.0',
-                    'numpy>=1.10.0',
-                    'pandas>=0.18',
-                    'pytz>=2011k',
-                    'python-dateutil>=2',
+install_requires = ['PyQt5==5.15.0',
+                    'pandas==1.0.5',
                     'termcolor>=1.1.0'
                     ]
 
