@@ -136,7 +136,7 @@ exclude_list = ['*.genbank', '*.fasta',
 cn_packages = find_packages(exclude=exclude_list)
 
 install_requires = ['PyQt5==5.15.0',
-                    'pandas==1.0.5',
+                    'pandas>=1.1.0',
                     'termcolor>=1.1.0'
                     ]
 
