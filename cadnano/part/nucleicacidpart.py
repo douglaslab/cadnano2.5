@@ -430,9 +430,9 @@ class NucleicAcidPart(Part):
         """
         if parity is None:
             return max(self._highest_even_id_num_used, self._highest_odd_id_num_used)
-        elif parity is 0:
+        elif parity == 0:
             return self._highest_even_id_num_used
-        elif parity is 1:
+        elif parity == 1:
             return self._highest_odd_id_num_used
         else:
             raise AttributeError('Invalid parity passed to getMaxIdNum:  %s' % parity)
@@ -454,9 +454,9 @@ class NucleicAcidPart(Part):
             self.recycle_bin.get(parity, {}).remove(num)
             # rebuild the heap since we removed a specific item
             heapify(self.recycle_bin.get(parity, {}))
-        if parity is 0 and self._highest_even_id_num_used < num:
+        if parity == 0 and self._highest_even_id_num_used < num:
             self._highest_even_id_num_used = num
-        elif parity is 1 and self._highest_odd_id_num_used < num:
+        elif parity == 1 and self._highest_odd_id_num_used < num:
             self._highest_odd_id_num_used = num
         self.reserved_ids.add(num)
     # end def
@@ -471,7 +471,7 @@ class NucleicAcidPart(Part):
             id_num (int): virtual helix ID number
         """
         parity = id_num % 2
-        if parity is 0:
+        if parity == 0:
             heappush(self.recycle_bin.get(0), id_num)
             self._highest_even_id_num_used = id_num-2
         else:

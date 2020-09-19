@@ -179,9 +179,9 @@ class HoneycombDnaPart(object):
         if xy_tuple is None or coordinate_tuple is None:
             return False
 
-        assert isinstance(radius_tuple, tuple) and len(radius_tuple) is 2
-        assert isinstance(xy_tuple, tuple) and len(xy_tuple) is 2 and all(isinstance(i, float) for i in xy_tuple)
-        assert isinstance(coordinate_tuple, tuple) and len(coordinate_tuple) is 2 and all(isinstance(i, int) for i in coordinate_tuple)
+        assert isinstance(radius_tuple, tuple) and len(radius_tuple) == 2
+        assert isinstance(xy_tuple, tuple) and len(xy_tuple) == 2 and all(isinstance(i, float) for i in xy_tuple)
+        assert isinstance(coordinate_tuple, tuple) and len(coordinate_tuple) == 2 and all(isinstance(i, int) for i in coordinate_tuple)
         assert isinstance(scale_factor, float)
 
         part_radius, item_radius = radius_tuple
@@ -370,9 +370,9 @@ class SquareDnaPart(object):
         if xy_tuple is None or coordinate_tuple is None:
             return False
 
-        assert isinstance(radius_tuple, tuple) and len(radius_tuple) is 2
-        assert isinstance(xy_tuple, tuple) and len(xy_tuple) is 2 and all(isinstance(i, float) for i in xy_tuple)
-        assert isinstance(coordinate_tuple, tuple) and len(coordinate_tuple) is 2 and all(isinstance(i, int) for i in coordinate_tuple)
+        assert isinstance(radius_tuple, tuple) and len(radius_tuple) == 2
+        assert isinstance(xy_tuple, tuple) and len(xy_tuple) == 2 and all(isinstance(i, float) for i in xy_tuple)
+        assert isinstance(coordinate_tuple, tuple) and len(coordinate_tuple) == 2 and all(isinstance(i, int) for i in coordinate_tuple)
         assert isinstance(scale_factor, float)
 
         part_radius, item_radius = radius_tuple
