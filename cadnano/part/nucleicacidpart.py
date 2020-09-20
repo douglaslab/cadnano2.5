@@ -598,7 +598,7 @@ class NucleicAcidPart(Part):
 
     def setVirtualHelixOriginLimits(self, limits):
         # TODO[NF]:  Docstring
-        assert len(limits) is 4
+        assert len(limits) == 4
         self.origin_limits = limits[0], limits[1], limits[2], limits[3]
 
     def getVirtualHelixOriginLimits(self):
