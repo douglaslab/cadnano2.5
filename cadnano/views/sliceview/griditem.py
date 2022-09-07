@@ -1,6 +1,6 @@
-from PyQt5.QtCore import QPointF
-from PyQt5.QtGui import QFont, QPainterPath
-from PyQt5.QtWidgets import QGraphicsEllipseItem, QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem, QGraphicsSimpleTextItem
+from PyQt6.QtCore import QPointF
+from PyQt6.QtGui import QFont, QPainterPath
+from PyQt6.QtWidgets import QGraphicsEllipseItem, QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem, QGraphicsSimpleTextItem
 
 from cadnano.fileio.lattice import HoneycombDnaPart, SquareDnaPart
 from cadnano.gui.palette import getBrushObj, getNoBrush, getNoPen, getPenObj

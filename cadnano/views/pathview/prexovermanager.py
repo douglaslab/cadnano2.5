@@ -1,8 +1,8 @@
 from collections import deque
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QGraphicsRectItem
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QColor
+from PyQt6.QtWidgets import QGraphicsRectItem
 
 from cadnano.gui.palette import getNoPen
 from cadnano.proxies.cnenum import StrandType

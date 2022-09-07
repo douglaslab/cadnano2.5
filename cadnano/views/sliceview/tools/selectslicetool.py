@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Summary
 """
-from PyQt5.QtCore import QPointF, Qt
-from PyQt5.QtGui import QPainterPath
-from PyQt5.QtWidgets import (QGraphicsItemGroup, QGraphicsPathItem,  # QGraphicsRectItem,
+from PyQt6.QtCore import QPointF, Qt
+from PyQt6.QtGui import QPainterPath
+from PyQt6.QtWidgets import (QGraphicsItemGroup, QGraphicsPathItem,  # QGraphicsRectItem,
                              QGraphicsItem, QMenu, QAction)
 from cadnano.fileio import v3encode, v3decode
 from cadnano.views.sliceview.virtualhelixitem import SliceVirtualHelixItem

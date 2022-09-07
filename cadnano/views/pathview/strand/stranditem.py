@@ -2,9 +2,9 @@
 # encoding: utf-8
 
 from math import floor
-from PyQt5.QtCore import QRectF, Qt
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsRectItem
-from PyQt5.QtWidgets import QGraphicsLineItem, QGraphicsSimpleTextItem
+from PyQt6.QtCore import QRectF, Qt
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsRectItem
+from PyQt6.QtWidgets import QGraphicsLineItem, QGraphicsSimpleTextItem
 
 from cadnano import getBatch
 from cadnano.controllers.stranditemcontroller import StrandItemController

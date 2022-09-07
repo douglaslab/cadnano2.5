@@ -5,9 +5,9 @@ Attributes:
     HIGHLIGHT_WIDTH (TYPE): Description
 """
 from ast import literal_eval
-from PyQt5.QtCore import QPointF, Qt, QRectF
-from PyQt5.QtWidgets import QGraphicsItem
-from PyQt5.QtWidgets import QGraphicsRectItem
+from PyQt6.QtCore import QPointF, Qt, QRectF
+from PyQt6.QtWidgets import QGraphicsItem
+from PyQt6.QtWidgets import QGraphicsRectItem
 
 from cadnano.controllers.nucleicacidpartitemcontroller import NucleicAcidPartItemController
 from cadnano.gui.palette import getPenObj, getNoPen  # , getBrushObj

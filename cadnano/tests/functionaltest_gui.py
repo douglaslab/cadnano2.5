@@ -2,8 +2,8 @@
 # pytest -c cadnano/tests/pytestgui.ini cadnano/tests/
 
 import pytest
-from PyQt5.QtCore import Qt, QPointF
-from PyQt5.QtTest import QTest
+from PyQt6.QtCore import Qt, QPointF
+from PyQt6.QtTest import QTest
 
 from cadnano.fileio.lattice import HoneycombDnaPart
 from cadnano.views.sliceview import slicestyles

@@ -1,15 +1,15 @@
 """Summary
 """
-from PyQt5.QtCore import QRectF, Qt
-from PyQt5.QtGui import QBrush, QFont
-from PyQt5.QtWidgets import (QGraphicsItem, QColorDialog,
+from PyQt6.QtCore import QRectF, Qt
+from PyQt6.QtGui import QBrush, QFont
+from PyQt6.QtWidgets import (QGraphicsItem, QColorDialog,
                              QGraphicsTextItem)
 
 from cadnano.gui.palette import getColorObj
 from . import pathstyles as styles
 
 
-_FONT = QFont(styles.THE_FONT, 12, QFont.Bold)
+_FONT = QFont(styles.THE_FONT, 12, QFont.Weight.Bold)
 
 
 class ColorPanel(QGraphicsItem):

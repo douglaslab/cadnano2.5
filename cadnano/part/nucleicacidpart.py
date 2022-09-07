@@ -71,7 +71,7 @@ def _defaultDataFrame(size, grid_type=GridType.HONEYCOMB):
 # end def
 
 
-DEFAULT_SIZE = 256
+DEFAULT_SIZE = 512
 DEFAULT_FULL_SIZE = DEFAULT_SIZE * 48
 DEFAULT_RADIUS = 1.0  # nm - It was set to 1.25 before
 HONEYCOMB_SUB_STEP_SIZE = 7

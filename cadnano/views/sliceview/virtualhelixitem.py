@@ -6,9 +6,9 @@ Attributes:
 import logging
 import random
 
-from PyQt5.QtCore import QLineF, QPointF, Qt, QRectF
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsEllipseItem
-from PyQt5.QtWidgets import QGraphicsSimpleTextItem
+from PyQt6.QtCore import QLineF, QPointF, Qt, QRectF
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsEllipseItem
+from PyQt6.QtWidgets import QGraphicsSimpleTextItem
 
 from cadnano.views.pathview import pathstyles
 from cadnano.controllers.virtualhelixitemcontroller import VirtualHelixItemController

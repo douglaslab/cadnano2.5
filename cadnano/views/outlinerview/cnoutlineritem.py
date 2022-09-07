@@ -1,5 +1,5 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTreeWidgetItem
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QTreeWidgetItem
 from cadnano.gui.palette import getBrushObj
 from . import outlinerstyles as styles
 

@@ -4,12 +4,12 @@ Attributes:
     COLOR_PATTERN (TYPE): Description
 """
 import re
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QFont, QPalette
-from PyQt5.QtWidgets import QTreeWidget, QHeaderView
-from PyQt5.QtWidgets import QStyledItemDelegate
-from PyQt5.QtWidgets import QStyleOptionButton, QStyleOptionViewItem
-from PyQt5.QtWidgets import QStyle, QCommonStyle
+from PyQt6.QtCore import Qt, QRect
+from PyQt6.QtGui import QFont, QPalette
+from PyQt6.QtWidgets import QTreeWidget, QHeaderView
+from PyQt6.QtWidgets import QStyledItemDelegate
+from PyQt6.QtWidgets import QStyleOptionButton, QStyleOptionViewItem
+from PyQt6.QtWidgets import QStyle, QCommonStyle
 
 from cadnano.proxies.cnenum import ItemType
 from cadnano.gui.palette import getBrushObj

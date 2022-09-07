@@ -1,8 +1,8 @@
 """Summary"""
 from __future__ import division
 
-from PyQt5.QtCore import QPointF, QRectF
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsRectItem
+from PyQt6.QtCore import QPointF, QRectF
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsRectItem
 
 from cadnano import getBatch, util
 from cadnano.proxies.cnenum import HandleType

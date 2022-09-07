@@ -265,9 +265,9 @@ def findChild(self):
     h<return>           Hide current child
     r<return>           return current child
     """
-    from PyQt5.QtWidgets import QGraphicsRectItem
-    from PyQt5.QtGui import QPen
-    from PyQt5.QtCore import Qt
+    from PyQt6.QtWidgets import QGraphicsRectItem
+    from PyQt6.QtGui import QPen
+    from PyQt6.QtCore import Qt
 
     children = self.childItems()
     parent = self.parentItem()
@@ -460,7 +460,7 @@ def qtdb_trace():
         return
     else:
         import pdb
-        from PyQt5.QtCore import pyqtRemoveInputHook
+        from PyQt6.QtCore import pyqtRemoveInputHook
 
     pyqtRemoveInputHook()
     pdb.set_trace()
@@ -471,6 +471,6 @@ def qtdb_resume():
 
     Note that this function assumes that pyqtRemoveInputHook has been called
     """
-    from PyQt5.QtCore import pyqtRestoreInputHook
+    from PyQt6.QtCore import pyqtRestoreInputHook
 
     pyqtRestoreInputHook()

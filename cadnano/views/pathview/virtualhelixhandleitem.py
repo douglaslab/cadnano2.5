@@ -2,9 +2,9 @@
 """
 from math import floor
 
-from PyQt5.QtCore import QRectF, Qt
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsEllipseItem
-from PyQt5.QtWidgets import QGraphicsSimpleTextItem
+from PyQt6.QtCore import QRectF, Qt
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsEllipseItem
+from PyQt6.QtWidgets import QGraphicsSimpleTextItem
 
 from cadnano.gui.palette import getPenObj, getBrushObj
 from . import pathstyles as styles

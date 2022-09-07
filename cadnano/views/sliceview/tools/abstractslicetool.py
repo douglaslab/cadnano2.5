@@ -1,7 +1,7 @@
 import math
 
-from PyQt5.QtCore import QLineF, QPointF, QRectF
-from PyQt5.QtWidgets import QGraphicsObject
+from PyQt6.QtCore import QLineF, QPointF, QRectF
+from PyQt6.QtWidgets import QGraphicsObject
 
 from cadnano.gui.palette import getPenObj
 from cadnano.views.sliceview import slicestyles as styles

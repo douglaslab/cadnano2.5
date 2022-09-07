@@ -7,19 +7,19 @@
 # This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 # WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-from PyQt5.QtCore import QDataStream
-from PyQt5.QtCore import Qt, QRect, QVariant
-from PyQt5.QtCore import QItemSelectionModel, QItemSelection
-from PyQt5.QtCore import QPersistentModelIndex
-from PyQt5.QtGui import QColor, QFont, QPalette, QPixmap
-from PyQt5.QtWidgets import QAbstractItemView, QAction
-from PyQt5.QtWidgets import QColorDialog, QHeaderView
-from PyQt5.QtWidgets import QLineEdit, QMenu
-from PyQt5.QtWidgets import QTreeWidget, QTreeView, QTreeWidgetItemIterator
-from PyQt5.QtWidgets import QStyle, QCommonStyle
-from PyQt5.QtWidgets import QStyledItemDelegate
-from PyQt5.QtWidgets import QStyleOptionButton, QStyleOptionViewItem
-from PyQt5.QtWidgets import QToolTip
+from PyQt6.QtCore import QDataStream
+from PyQt6.QtCore import Qt, QRect, QVariant
+from PyQt6.QtCore import QItemSelectionModel, QItemSelection
+from PyQt6.QtCore import QPersistentModelIndex
+from PyQt6.QtGui import QColor, QFont, QPalette, QPixmap
+from PyQt6.QtWidgets import QAbstractItemView, QAction
+from PyQt6.QtWidgets import QColorDialog, QHeaderView
+from PyQt6.QtWidgets import QLineEdit, QMenu
+from PyQt6.QtWidgets import QTreeWidget, QTreeView, QTreeWidgetItemIterator
+from PyQt6.QtWidgets import QStyle, QCommonStyle
+from PyQt6.QtWidgets import QStyledItemDelegate
+from PyQt6.QtWidgets import QStyleOptionButton, QStyleOptionViewItem
+from PyQt6.QtWidgets import QToolTip
 
 from cadnano.proxies.cnenum import PartType
 from cadnano.gui.palette import getBrushObj

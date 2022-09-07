@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # encoding: utf-8
-from PyQt5.QtCore import QRectF, Qt, QPointF, QEvent
-from PyQt5.QtGui import QBrush, QPen, QFont, QColor, QPainterPath
-from PyQt5.QtGui import QTransform, QTextCursor
-from PyQt5.QtWidgets import QGraphicsPathItem, QGraphicsRectItem
-from PyQt5.QtWidgets import QGraphicsTextItem
+from PyQt6.QtCore import QRectF, Qt, QPointF, QEvent
+from PyQt6.QtGui import QBrush, QPen, QFont, QColor, QPainterPath
+from PyQt6.QtGui import QTransform, QTextCursor
+from PyQt6.QtWidgets import QGraphicsPathItem, QGraphicsRectItem
+from PyQt6.QtWidgets import QGraphicsTextItem
 
 from cadnano.gui.palette import getPenObj, getNoPen
 from cadnano.views.pathview import pathstyles as styles
@@ -48,7 +48,7 @@ _BIG_RECT = _DEFAULT_RECT.united(_INSERT_PATH_UP_RECT)
 _BIG_RECT = _BIG_RECT.united(_INSERT_PATH_DOWNRect)
 _B_PEN2 = getPenObj(styles.BLUE_STROKE, 2)
 _OFFSET2 = _BW*0.75
-_FONT = QFont(styles.THE_FONT, int(styles.THE_FONT_SIZE/2), QFont.Bold)
+_FONT = QFont(styles.THE_FONT, int(styles.THE_FONT_SIZE/2), QFont.Weight.Bold)
 _BIG_RECT.adjust(-15, -15, 30, 30)
 # Bases are drawn along and above the insert path.
 # These calculations revolve around fixing the characters at a certain

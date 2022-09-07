@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QFont
+from PyQt6.QtGui import QFont
 from cadnano.views.styles import THE_FONT, THE_FONT_SIZE
 from cadnano.views.styles import BLUE_FILL, BLUE_STROKE
 from cadnano.views.styles import GRAY_FILL, GRAY_STROKE
@@ -29,7 +29,7 @@ SELECTED_PEN_WIDTH = 2
 SELECTED_ALPHA = 0
 
 
-GRID_NUM_FONT = QFont(THE_FONT, 10, QFont.Bold)
+GRID_NUM_FONT = QFont(THE_FONT, 10, QFont.Weight.Bold)
 USE_TEXT_COLOR = "#ffffff"
 GRID_TEXT_COLOR = "#000000"
 

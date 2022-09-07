@@ -3,9 +3,9 @@
 Attributes:
     SNAP_WIDTH (int): Description
 """
-from PyQt5.QtCore import QLineF, QPointF, Qt, QRectF
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsEllipseItem
-from PyQt5.QtWidgets import QGraphicsSimpleTextItem
+from PyQt6.QtCore import QLineF, QPointF, Qt, QRectF
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsEllipseItem
+from PyQt6.QtWidgets import QGraphicsSimpleTextItem
 
 from cadnano.controllers.virtualhelixitemcontroller import VirtualHelixItemController
 from cadnano.views.abstractitems.abstractvirtualhelixitem import AbstractVirtualHelixItem

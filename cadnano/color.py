@@ -13,7 +13,7 @@ exposed in the API documentation
 try:
     # from cadnano import app
     # if not app().is_temp_app:
-    from PyQt5.QtGui import QColor as Color
+    from PyQt6.QtGui import QColor as Color
 except Exception:
     class Color(object):
         """ Overloaded constructor using *args to be compatible with :class:`QColor`

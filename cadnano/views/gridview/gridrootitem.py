@@ -1,6 +1,6 @@
 """Summary
 """
-from PyQt5.QtWidgets import QGraphicsRectItem
+from PyQt6.QtWidgets import QGraphicsRectItem
 from cadnano.proxies.cnenum import PartType
 from cadnano.controllers.viewrootcontroller import ViewRootController
 from .nucleicacidpartitem import GridNucleicAcidPartItem

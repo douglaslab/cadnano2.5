@@ -97,7 +97,7 @@ Now that we have a virtualenv working, let's get all the cadnano dependencies, a
    Collecting pandas
      Using cached pandas-0.22.0-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
    Collecting termcolor
-   Collecting sip<4.20,>=4.19.4 (from PyQt5)
+   Collecting sip<4.20,>=4.19.4 (from PyQt6)
      Using cached sip-4.19.6-cp36-cp36m-macosx_10_6_intel.whl
    Collecting numpy>=1.9.0 (from pandas)
      Using cached numpy-1.14.0-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl

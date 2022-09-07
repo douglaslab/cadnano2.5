@@ -4,12 +4,12 @@ Attributes:
     RE_DNA_PATTERN (SRE_Pattern): Matches any letters that are not valid DNA.
 """
 import re
-from PyQt5.QtCore import Qt, QSignalMapper
-from PyQt5.QtCore import QRectF, QPointF
-from PyQt5.QtGui import QFont, QTransform
-from PyQt5.QtGui import QPainterPath, QPolygonF
-from PyQt5.QtGui import QTextCharFormat, QSyntaxHighlighter
-from PyQt5.QtWidgets import QDialogButtonBox, QDialog, QRadioButton
+from PyQt6.QtCore import Qt, QSignalMapper
+from PyQt6.QtCore import QRectF, QPointF
+from PyQt6.QtGui import QFont, QTransform
+from PyQt6.QtGui import QPainterPath, QPolygonF
+from PyQt6.QtGui import QTextCharFormat, QSyntaxHighlighter
+from PyQt6.QtWidgets import QDialogButtonBox, QDialog, QRadioButton
 from cadnano.extras.dnasequences import sequences
 from cadnano.gui.dialogs.ui_addseq import Ui_AddSeqDialog
 from cadnano.views.pathview import pathstyles as styles

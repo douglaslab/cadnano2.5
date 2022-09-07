@@ -5,8 +5,8 @@ Module for caching `QColor <http://doc.qt.io/qt-5/qcolor.html>`_,
 Could be extended to cache `QFont <http://doc.qt.io/qt-5/qfont.html>`_ objects as well.
 """
 
-from PyQt5.QtGui import QColor, QPen, QBrush
-from PyQt5.QtCore import Qt
+from PyQt6.QtGui import QColor, QPen, QBrush
+from PyQt6.QtCore import Qt
 
 color_cache = {}
 pen_cache = {}

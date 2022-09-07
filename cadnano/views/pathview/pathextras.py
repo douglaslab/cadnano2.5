@@ -12,13 +12,13 @@ Attributes:
 """
 from math import floor
 
-from PyQt5.QtCore import QObject, QPointF, QRectF, Qt
-from PyQt5.QtCore import QPropertyAnimation, pyqtProperty
-from PyQt5.QtGui import QBrush, QColor, QPainterPath
-from PyQt5.QtGui import QPolygonF, QTransform
-from PyQt5.QtGui import QFontMetrics
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem
-from PyQt5.QtWidgets import QGraphicsSimpleTextItem
+from PyQt6.QtCore import QObject, QPointF, QRectF, Qt
+from PyQt6.QtCore import QPropertyAnimation, pyqtProperty
+from PyQt6.QtGui import QBrush, QColor, QPainterPath
+from PyQt6.QtGui import QPolygonF, QTransform
+from PyQt6.QtGui import QFontMetrics
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem
+from PyQt6.QtWidgets import QGraphicsSimpleTextItem
 
 from cadnano import util
 from cadnano.gui.palette import getNoPen, getPenObj, newPenObj

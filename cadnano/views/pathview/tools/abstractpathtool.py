@@ -1,7 +1,7 @@
 """Summary
 """
-from PyQt5.QtCore import QRectF, QPointF
-from PyQt5.QtWidgets import QGraphicsObject
+from PyQt6.QtCore import QRectF, QPointF
+from PyQt6.QtWidgets import QGraphicsObject
 
 from cadnano import util
 from cadnano.views.pathview import pathstyles as styles

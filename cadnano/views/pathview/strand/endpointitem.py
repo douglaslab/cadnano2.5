@@ -6,11 +6,11 @@ from math import floor
 # import logging
 # logger = logging.getLogger(__name__)
 
-from PyQt5.QtCore import QPointF, QRectF, Qt
-from PyQt5.QtGui import QBrush, QPen, QPainterPath, QPolygonF
-from PyQt5.QtWidgets import qApp
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPathItem
-from PyQt5.QtWidgets import QGraphicsRectItem, QGraphicsEllipseItem
+from PyQt6.QtCore import QPointF, QRectF, Qt
+from PyQt6.QtGui import QBrush, QPen, QPainterPath, QPolygonF
+from PyQt6.QtWidgets import qApp
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsPathItem
+from PyQt6.QtWidgets import QGraphicsRectItem, QGraphicsEllipseItem
 
 from cadnano.gui.palette import getColorObj
 from cadnano.views.pathview import pathstyles as styles

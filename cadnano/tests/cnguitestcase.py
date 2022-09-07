@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import Qt, QEvent, QPoint, QPointF, QTimer
-from PyQt5.QtGui import QMouseEvent, QKeyEvent
-from PyQt5.QtTest import QTest
+from PyQt6.QtCore import Qt, QEvent, QPoint, QPointF, QTimer
+from PyQt6.QtGui import QMouseEvent, QKeyEvent
+from PyQt6.QtTest import QTest
 
 from cntestcase import CNTestApp
 from cadnano import initAppWithGui

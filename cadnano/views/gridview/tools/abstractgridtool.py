@@ -1,10 +1,10 @@
 """Summary
 """
 import math
-from PyQt5.QtCore import QPointF, QLineF, QRectF
-from PyQt5.QtWidgets import QGraphicsObject
-from PyQt5.QtWidgets import QGraphicsLineItem
-from PyQt5.QtWidgets import QGraphicsEllipseItem
+from PyQt6.QtCore import QPointF, QLineF, QRectF
+from PyQt6.QtWidgets import QGraphicsObject
+from PyQt6.QtWidgets import QGraphicsLineItem
+from PyQt6.QtWidgets import QGraphicsEllipseItem
 from cadnano.views.gridview import gridstyles as styles
 from cadnano.gui.palette import getPenObj
 

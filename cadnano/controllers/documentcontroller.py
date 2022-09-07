@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 
-from PyQt5.QtCore import QDir, QFileInfo, QRect, QSettings, QSize, Qt
-from PyQt5.QtGui import QKeySequence, QPainter
-from PyQt5.QtSvg import QSvgGenerator
-from PyQt5.QtWidgets import (QActionGroup, QApplication, QDialog, QFileDialog,
+from PyQt6.QtCore import QDir, QFileInfo, QRect, QSettings, QSize, Qt
+from PyQt6.QtGui import QKeySequence, QPainter
+from PyQt6.QtSvg import QSvgGenerator
+from PyQt6.QtWidgets import (QActionGroup, QApplication, QDialog, QFileDialog,
                              QGraphicsItem, QMessageBox,
                              QStyleOptionGraphicsItem)
 

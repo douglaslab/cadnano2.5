@@ -1,7 +1,7 @@
 """Summary
 """
-from PyQt5.QtCore import QRectF, QPointF
-from PyQt5.QtGui import QPainterPath, QPolygonF
+from PyQt6.QtCore import QRectF, QPointF
+from PyQt6.QtGui import QPainterPath, QPolygonF
 from cadnano.views.pathview import pathstyles as styles
 from cadnano.gui.palette import getPenObj
 from .abstractpathtool import AbstractPathTool

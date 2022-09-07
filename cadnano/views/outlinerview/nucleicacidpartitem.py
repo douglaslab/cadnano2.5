@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QItemSelectionModel
+from PyQt6.QtCore import QItemSelectionModel
 from cadnano.proxies.cnenum import ItemType
 from cadnano.views import styles
 from .cnoutlineritem import CNOutlinerItem, DISABLE_FLAGS, LEAF_FLAGS

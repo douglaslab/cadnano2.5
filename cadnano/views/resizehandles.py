@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from PyQt5.QtCore import QObject, QPointF, QRectF, Qt
-from PyQt5.QtGui import QFontMetrics
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsRectItem, qApp
-from PyQt5.QtWidgets import QGraphicsTextItem
+from PyQt6.QtCore import QObject, QPointF, QRectF, Qt
+from PyQt6.QtGui import QFontMetrics
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsRectItem, qApp
+from PyQt6.QtWidgets import QGraphicsTextItem
 from cadnano.gui.palette import getBrushObj, getPenObj
 from cadnano.proxies.cnenum import Axis, HandleType
 from . import styles

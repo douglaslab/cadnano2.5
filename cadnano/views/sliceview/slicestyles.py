@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QFont
+from PyQt6.QtGui import QFont
 from cadnano.views.styles import BLUE_STROKE, GRAY_STROKE, THE_FONT
 
 # Slice Sizing
@@ -28,7 +28,7 @@ SELECTED_PEN_WIDTH = 0  # cosmetic
 SELECTED_ALPHA = 0
 
 
-SLICE_NUM_FONT = QFont(THE_FONT, 10, QFont.Bold)
+SLICE_NUM_FONT = QFont(THE_FONT, 10, QFont.Weight.Bold)
 DEBUG_FONT = QFont(THE_FONT, 8)
 USE_TEXT_COLOR = "#ffffff"
 SLICE_TEXT_COLOR = "#000000"

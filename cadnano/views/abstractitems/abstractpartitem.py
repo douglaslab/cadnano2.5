@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsRectItem
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsRectItem
 
 
 class QAbstractPartItem(QGraphicsRectItem):

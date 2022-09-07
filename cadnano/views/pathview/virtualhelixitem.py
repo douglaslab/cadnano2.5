@@ -5,9 +5,9 @@
 
 from math import floor, atan2, sqrt
 
-from PyQt5.QtCore import QRectF, Qt
-from PyQt5.QtGui import QPainterPath
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPathItem
+from PyQt6.QtCore import QRectF, Qt
+from PyQt6.QtGui import QPainterPath
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsPathItem
 
 from cadnano import util
 from cadnano.controllers.virtualhelixitemcontroller import VirtualHelixItemController

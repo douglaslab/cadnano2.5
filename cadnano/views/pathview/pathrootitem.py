@@ -1,7 +1,7 @@
 """Summary
 """
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QGraphicsRectItem
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QGraphicsRectItem
 
 from cadnano import util
 from cadnano.proxies.cnenum import PartType

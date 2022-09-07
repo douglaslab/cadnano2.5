@@ -12,9 +12,9 @@ Synopsis:
     panning, and zooming.
 """
 
-from PyQt5.QtCore import Qt, QTimer, pyqtSignal, qWarning
-from PyQt5.QtGui import QPaintEngine
-from PyQt5.QtWidgets import QGraphicsView, qApp
+from PyQt6.QtCore import Qt, QTimer, pyqtSignal, qWarning
+from PyQt6.QtGui import QPaintEngine
+from PyQt6.QtWidgets import QGraphicsView, qApp
 
 from cadnano import app, util
 from cadnano.views.pathview import pathstyles as styles
@@ -22,7 +22,7 @@ from cadnano.views.pathview import pathstyles as styles
 # for OpenGL mode
 try:
     # from OpenGL import GL
-    from PyQt5.QtWidgets import QOpenGLWidget
+    from PyQt6.QtWidgets import QOpenGLWidget
 except ImportError:
     GL = False
 

@@ -1,7 +1,7 @@
 from cadnano import util
-from PyQt5.QtCore import QObject, pyqtSignal, Qt
-from PyQt5.QtWidgets import QGraphicsObject
-from PyQt5.QtSvg import QSvgRenderer
+from PyQt6.QtCore import QObject, pyqtSignal, Qt
+from PyQt6.QtWidgets import QGraphicsObject
+from PyQt6.QtSvg import QSvgRenderer
 
 
 class SVGButton(QGraphicsObject):

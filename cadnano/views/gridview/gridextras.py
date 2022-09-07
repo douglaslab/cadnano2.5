@@ -1,7 +1,7 @@
 import numpy as np
-from PyQt5.QtCore import QLineF, QObject, QPointF, QPropertyAnimation, QRectF, Qt, QRectF, pyqtProperty
-from PyQt5.QtGui import QBrush, QColor, QPainterPath, QPen, QPolygonF, QRadialGradient, QTransform
-from PyQt5.QtWidgets import QGraphicsEllipseItem, QGraphicsLineItem, QGraphicsPathItem, QGraphicsRectItem
+from PyQt6.QtCore import QLineF, QObject, QPointF, QPropertyAnimation, QRectF, Qt, QRectF, pyqtProperty
+from PyQt6.QtGui import QBrush, QColor, QPainterPath, QPen, QPolygonF, QRadialGradient, QTransform
+from PyQt6.QtWidgets import QGraphicsEllipseItem, QGraphicsLineItem, QGraphicsPathItem, QGraphicsRectItem
 
 from cadnano.gui.palette import getBrushObj, getColorObj, getNoPen, getPenObj
 from . import gridstyles as styles

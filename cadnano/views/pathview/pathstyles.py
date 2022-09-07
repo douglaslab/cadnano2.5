@@ -50,7 +50,7 @@ Attributes:
     ZSTRANDITEM (int): Description
     ZXOVERITEM (int): Description
 """
-from PyQt5.QtGui import QFont, QFontMetricsF
+from PyQt6.QtGui import QFont, QFontMetricsF
 from cadnano.views.styles import THE_FONT, THE_FONT_SIZE
 from cadnano.views.styles import BLUE_FILL, BLUE_STROKE  # noqa
 from cadnano.views.styles import GRAY_FILL, GRAY_STROKE  # noqa
@@ -165,6 +165,6 @@ def setFontMetrics():
 # end def
 
 
-XOVER_LABEL_FONT = QFont(THE_FONT, int(THE_FONT_SIZE/2), QFont.Light)
-XOVER_LABEL_FONT_BOLD = QFont(THE_FONT, int(THE_FONT_SIZE/2), QFont.Bold)
-VIRTUALHELIXHANDLEITEM_FONT = QFont(THE_FONT, THE_FONT_SIZE, QFont.Bold)
+XOVER_LABEL_FONT = QFont(THE_FONT, int(THE_FONT_SIZE/2), QFont.Weight.Light)
+XOVER_LABEL_FONT_BOLD = QFont(THE_FONT, int(THE_FONT_SIZE/2), QFont.Weight.Bold)
+VIRTUALHELIXHANDLEITEM_FONT = QFont(THE_FONT, THE_FONT_SIZE, QFont.Weight.Bold)

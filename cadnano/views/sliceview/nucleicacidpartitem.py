@@ -1,7 +1,7 @@
 from ast import literal_eval
 
-from PyQt5.QtCore import QPointF, QRectF, Qt
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsLineItem, QGraphicsRectItem, QGraphicsSceneMouseEvent
+from PyQt6.QtCore import QPointF, QRectF, Qt
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsLineItem, QGraphicsRectItem, QGraphicsSceneMouseEvent
 
 from cadnano.proxies.cnenum import GridType, HandleType
 from cadnano.fileio.lattice import HoneycombDnaPart, SquareDnaPart

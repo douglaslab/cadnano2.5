@@ -1,6 +1,6 @@
 """Summary
 """
-from PyQt5.QtWidgets import QGraphicsRectItem
+from PyQt6.QtWidgets import QGraphicsRectItem
 from . import slicestyles as styles
 from .sliceextras import PreXoverItemGroup, WEDGE_RECT
 

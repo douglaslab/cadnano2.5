@@ -4,9 +4,9 @@ Attributes:
     KEY_COL (int): QTreeWidgetItem column that will display property keys
     VAL_COL (int): QTreeWidgetItem column that will display property values
 """
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTreeWidgetItem
-from PyQt5.QtWidgets import QDoubleSpinBox, QSpinBox
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QTreeWidgetItem
+from PyQt6.QtWidgets import QDoubleSpinBox, QSpinBox
 
 from cadnano.proxies.cnenum import ItemType
 from cadnano.controllers.virtualhelixitemcontroller import VirtualHelixItemController

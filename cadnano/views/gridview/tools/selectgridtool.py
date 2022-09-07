@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Summary
 """
-from PyQt5.QtCore import QPointF, Qt
-from PyQt5.QtWidgets import (QGraphicsItemGroup, QGraphicsRectItem,
+from PyQt6.QtCore import QPointF, Qt
+from PyQt6.QtWidgets import (QGraphicsItemGroup, QGraphicsRectItem,
                              QGraphicsItem, QMenu, QAction)
 from cadnano.views.gridview.virtualhelixitem import GridVirtualHelixItem
 from cadnano.gui.palette import getPenObj

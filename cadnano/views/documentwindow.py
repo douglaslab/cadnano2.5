@@ -1,10 +1,10 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtCore import QSettings
-from PyQt5.QtCore import QPoint, QSize
-from PyQt5.QtWidgets import QGraphicsScene
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWidgets import QGraphicsItem
-from PyQt5.QtWidgets import QAction, QApplication, QWidget
+from PyQt6.QtCore import Qt
+from PyQt6.QtCore import QSettings
+from PyQt6.QtCore import QPoint, QSize
+from PyQt6.QtWidgets import QGraphicsScene
+from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QGraphicsItem
+from PyQt6.QtWidgets import QAction, QApplication, QWidget
 
 
 from cadnano import app
@@ -19,7 +19,7 @@ from cadnano.views.sliceview.slicerootitem import SliceRootItem
 from cadnano.views.sliceview.tools.slicetoolmanager import SliceToolManager
 
 
-# from PyQt5.QtOpenGL import QGLWidget
+# from PyQt6.QtOpenGL import QGLWidget
 # # check out https://github.com/baoboa/pyqt5/tree/master/examples/opengl
 # # for an example of the QOpenGlWidget added in Qt 5.4
 

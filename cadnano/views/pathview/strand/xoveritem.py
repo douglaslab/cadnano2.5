@@ -1,8 +1,8 @@
 """Summary
 """
-from PyQt5.QtCore import QPointF, QRectF, Qt
-from PyQt5.QtGui import QFontMetrics, QPainterPath
-from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem, QGraphicsSimpleTextItem
+from PyQt6.QtCore import QPointF, QRectF, Qt
+from PyQt6.QtGui import QFontMetrics, QPainterPath
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsPathItem, QGraphicsRectItem, QGraphicsSimpleTextItem
 from cadnano.views.pathview import pathstyles as styles
 from cadnano.gui.palette import getColorObj, getPenObj, getNoPen, getNoBrush, getSolidBrush
 
