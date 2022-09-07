@@ -1,0 +1,120 @@
+{
+    "name": "<date>",
+    "vstrands": [
+                {
+                    "num": 1,
+                    "row":1,
+                    "col":1,
+                    "scaf":[["<vh5p>", "<idx5p>", "<vh3p>", "<idx3p>"],],
+                    "stap":[["<vh5p>", "<idx5p>", "<vh3p>", "<idx3p>"]],
+                    "skip":[-1,...], // length of vh
+                    "loop":[30, ...], // insertions length of vh
+                    "scafLoop":[],
+                    "stapLoop":[],
+                },
+                ],
+    "oligos":[
+            {
+                "vh_num": 1,
+                "idx": 1,
+                "seq": "ACGT",
+            },
+        ],
+    "modifications":{
+        // all of the types of mods first
+            "<id>": {
+                "name":"",
+                "color":"#00FF00",
+                "seq5p":"",
+                "seq3p":"",
+                "seqInt":"",
+                "note": ""
+            },
+            // now internal and external instances
+            // "{},{},{}"
+            "int_instances": {"<strand>,<idx>,<coord>,<isstaple>": "<id>"},
+            "ext_instances": {},
+        },
+
+}
+
+// Version 3
+
+{
+    "format": "Version 3.0",
+    "date":,
+    "name": ,
+    "parts": [
+        {
+        "name":,
+        "total_points": 1,
+        "total_id_nums": 1,
+        "position": [],
+        "virtual_helices": [
+            {  "name":,
+                "is_visible": true,
+                "color": "#00000000",
+                "eulerZ": 0.0,
+                "neighbor_active_angle": 0.0,
+                "neighbors": "[]",
+                "bases_per_repeat": 21,
+                "turns_per_repeat": 2,
+                "repeats": 2,
+                "helical_pitch": 1.0,
+                "bases_per_turn": 10.5,
+                "twist_per_base": 37.0,
+                "minor_groove_angle": 171.0,
+            },
+        ],
+        "offsets_and_size":[1, 2, 3],
+        "axial_points": [[1.0, 2.0, 3.0], ...],
+        "strands": {
+                    "indices":[
+                                [
+                                    [["<fstart>","<fstop>"], ...],
+                                    [["<rstart>","<rstop>"], ... ]
+                                ],
+                                ...],
+                    "properties":[
+                                    [
+                                        [{"color":"#ff0000"}, null, ...]
+                                        [{"color":"#cc0000"}, null, ...],
+                                    ], // list of properties per vh, per strandset
+                                    ...],
+                    },
+        "insertions": [{"1": 30, ...}, {"0": -1,...}, ...], // insertions
+        "xovers": [["<id_5p>","<isfwd>", "<idx5p>", "<id_3p>", "<isfwd>", "<idx3p>"], ...],
+        "oligos": [{ // 5 prime end of the oligo
+                "vh_num":,
+                "5pidx":,
+                "fwd":,
+                "color":,
+                "seq"
+            }],
+        "modifications":{
+            // all of the types of mods first
+                "modtypes" : {
+                    "<id>": {
+                        "name":"",
+                        "color":"#00FF00",
+                        "seq5p":"",
+                        "seq3p":"",
+                        "seqint":"",
+                        "note": ""
+                    }
+                },
+                // now internal and external instances
+                // "{},{},{}"
+                "internal_instances": {"<id>, <idx>, <isfwd>": "<id>"},
+                "external_instances": {},
+        },
+        "view_properties": {
+            "slice": {"position": [100.0, 100.0]},
+            "path": {
+                "order": [1, 2, 3],
+                "position": [100.0, 100.0]
+            }
+        }
+    } // end part
+    ]
+}
