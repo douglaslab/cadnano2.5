@@ -23,14 +23,14 @@ class CNOutlinerItem(QTreeWidgetItem):
     CAN_NAME_EDIT = True
 
     def __init__(self, cn_model, parent):
-        super(QTreeWidgetItem, self).__init__(parent, QTreeWidgetItem.UserType)
+        super(QTreeWidgetItem, self).__init__(parent, QTreeWidgetItem.ItemType.UserType)
         self._cn_model = cn_model
         name = cn_model.getName()
         color = cn_model.getColor()
-        self.setData(NAME_COL,      Qt.EditRole, name)
-        self.setData(LOCKED_COL,    Qt.EditRole, False)  # is_visible
-        self.setData(VISIBLE_COL,   Qt.EditRole, True)  # is_visible
-        self.setData(COLOR_COL,     Qt.EditRole, color)
+        self.setData(NAME_COL,      Qt.ItemDataRole.EditRole, name)
+        self.setData(LOCKED_COL,    Qt.ItemDataRole.EditRole, False)  # is_visible
+        self.setData(VISIBLE_COL,   Qt.ItemDataRole.EditRole, True)  # is_visible
+        self.setData(COLOR_COL,     Qt.ItemDataRole.EditRole, color)
     # end def
 
     ### PRIVATE SUPPORT METHODS ###
@@ -63,9 +63,9 @@ class CNOutlinerItem(QTreeWidgetItem):
         # this works only for color. uncomment below to generalize to properties
         # print("outliner %s - updateCNModel" % (str(type(self))))
         cn_model = self._cn_model
-        name = self.data(NAME_COL, Qt.DisplayRole)
-        color = self.data(COLOR_COL, Qt.DisplayRole)
-        is_visible = self.data(VISIBLE_COL, Qt.DisplayRole)
+        name = self.data(NAME_COL, Qt.ItemDataRole.DisplayRole)
+        color = self.data(COLOR_COL, Qt.ItemDataRole.DisplayRole)
+        is_visible = self.data(VISIBLE_COL, Qt.ItemDataRole.DisplayRole)
         mname, mcolor, mvisible = cn_model.getOutlineProperties()
         if name is not None and name != mname:
             cn_model.setProperty('name', name)
@@ -78,22 +78,22 @@ class CNOutlinerItem(QTreeWidgetItem):
     def setValue(self, key, value):
         # cn_model = self._model_part
         if key == 'name':
-            name = self.data(NAME_COL, Qt.DisplayRole)
+            name = self.data(NAME_COL, Qt.ItemDataRole.DisplayRole)
             if name != value:
                 # print("setting name", self.isSelected())
-                self.setData(NAME_COL, Qt.EditRole, value)
+                self.setData(NAME_COL, Qt.ItemDataRole.EditRole, value)
         elif key == 'color':
-            color = self.data(COLOR_COL, Qt.DisplayRole)
+            color = self.data(COLOR_COL, Qt.ItemDataRole.DisplayRole)
             if color != value:
-                self.setData(COLOR_COL, Qt.EditRole, value)
+                self.setData(COLOR_COL, Qt.ItemDataRole.EditRole, value)
         elif key == 'is_locked':
-            is_locked = self.data(LOCKED_COL, Qt.DisplayRole)
+            is_locked = self.data(LOCKED_COL, Qt.ItemDataRole.DisplayRole)
             if is_locked != value:
-                self.setData(LOCKED_COL, Qt.EditRole, value)
+                self.setData(LOCKED_COL, Qt.ItemDataRole.EditRole, value)
         elif key == 'is_visible':
-            is_visible = self.data(VISIBLE_COL, Qt.DisplayRole)
+            is_visible = self.data(VISIBLE_COL, Qt.ItemDataRole.DisplayRole)
             if is_visible != value:
-                self.setData(VISIBLE_COL, Qt.EditRole, value)
+                self.setData(VISIBLE_COL, Qt.ItemDataRole.EditRole, value)
         else:
             "property not supported"
             # pass
@@ -115,13 +115,13 @@ class CNOutlinerItem(QTreeWidgetItem):
 
 class RootPartItem(QTreeWidgetItem):
     def __init__(self, model_part, item_name, parent):
-        super(QTreeWidgetItem, self).__init__(parent, QTreeWidgetItem.UserType)
+        super(QTreeWidgetItem, self).__init__(parent, QTreeWidgetItem.ItemType.UserType)
         self._cn_model = model_part
         self.item_name = item_name
-        self.setData(NAME_COL, Qt.EditRole, item_name)
-        self.setData(LOCKED_COL, Qt.EditRole, False)  # is_locked
-        self.setData(VISIBLE_COL, Qt.EditRole, True)  # is_visible
-        self.setData(COLOR_COL, Qt.EditRole, "#ffffff")  # color
+        self.setData(NAME_COL, Qt.ItemDataRole.EditRole, item_name)
+        self.setData(LOCKED_COL, Qt.ItemDataRole.EditRole, False)  # is_locked
+        self.setData(VISIBLE_COL, Qt.ItemDataRole.EditRole, True)  # is_visible
+        self.setData(COLOR_COL, Qt.ItemDataRole.EditRole, "#ffffff")  # color
         # self.setFlags(self.flags() & ~Qt.ItemFlag.ItemIsSelectable)
         self.setFlags(ROOT_FLAGS)
         self.setExpanded(True)

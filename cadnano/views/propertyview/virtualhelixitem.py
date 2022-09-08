@@ -140,7 +140,7 @@ class VirtualHelixSetItem(CNPropertyItem):
         """Notify the cadnano model that a property may need updating.
         This method should be called by the item model dataChangedSlot.
         """
-        value = self.data(1, Qt.DisplayRole)
+        value = self.data(1, Qt.ItemDataRole.DisplayRole)
         key = self._key
         u_s = self.treeWidget().undoStack()
         u_s.beginMacro("Multi Property VH Edit: %s" % key)

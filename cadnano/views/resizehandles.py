@@ -232,15 +232,15 @@ class HandleItem(QGraphicsRectItem):
         self.event_scene_start_position = QPointF(0, 0)
 
         if handle_type & (HandleType.LEFT | HandleType.RIGHT):
-            self._resize_cursor = Qt.SizeHorCursor
+            self._resize_cursor = Qt.CursorShape.SizeHorCursor
         elif handle_type & (HandleType.TOP | HandleType.BOTTOM):
-            self._resize_cursor = Qt.SizeVerCursor
+            self._resize_cursor = Qt.CursorShape.SizeVerCursor
         elif handle_type & (HandleType.TOP_LEFT | HandleType.BOTTOM_RIGHT):
-            self._resize_cursor = Qt.SizeFDiagCursor
+            self._resize_cursor = Qt.CursorShape.SizeFDiagCursor
         elif handle_type & (HandleType.TOP_RIGHT | HandleType.BOTTOM_LEFT):
-            self._resize_cursor = Qt.SizeBDiagCursor
+            self._resize_cursor = Qt.CursorShape.SizeBDiagCursor
         else:
-            self._resize_cursor = Qt.ClosedHandCursor
+            self._resize_cursor = Qt.CursorShape.ClosedHandCursor
     # end def
 
     def handleGroup(self):
@@ -252,13 +252,13 @@ class HandleItem(QGraphicsRectItem):
     # end def
 
     def hoverEnterEvent(self, event):
-        self.setCursor(Qt.OpenHandCursor)
+        self.setCursor(Qt.CursorShape.OpenHandCursor)
         # self._part_item.updateStatusBar("{}–{}".format(self._idx_low, self._idx_high))
         # QGraphicsItem.hoverEnterEvent(self, event)
     # end def
 
     def hoverLeaveEvent(self, event):
-        self.setCursor(Qt.ArrowCursor)
+        self.setCursor(Qt.CursorShape.ArrowCursor)
     # end def
 
     def mousePressEvent(self, event):
@@ -403,7 +403,7 @@ class HandleItem(QGraphicsRectItem):
             parent = self.parentItem()
             parent.setMovable(False)
             parent.finishDrag()
-        self.setCursor(Qt.OpenHandCursor)
+        self.setCursor(Qt.CursorShape.OpenHandCursor)
         # NOTE was QGraphicsItem.mouseReleaseEvent(parent, event) but that errored
         # NC 2018.01.29 so that seemd to fix the error
         return QGraphicsItem.mouseReleaseEvent(self, event)

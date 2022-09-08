@@ -28,8 +28,8 @@ class CNPropertyItem(QTreeWidgetItem):
             parent (TYPE): Description
             key (None, optional): Description
         """
-        super(CNPropertyItem, self).__init__(parent, QTreeWidgetItem.UserType)
-        self.setFlags(self.flags() | Qt.ItemIsEditable)
+        super(CNPropertyItem, self).__init__(parent, QTreeWidgetItem.ItemType.UserType)
+        self.setFlags(self.flags() | Qt.ItemFlag.ItemIsEditable)
         cn_model_list = self.cnModelList()
         self._controller_list = []
         self.is_enum = False
@@ -59,8 +59,8 @@ class CNPropertyItem(QTreeWidgetItem):
                 name = "%d %s..." % (len(cn_model_list), self._GROUPNAME)
             self._key = the_key = "name"
             self._prop_items[the_key] = self
-            self.setData(KEY_COL, Qt.EditRole, the_key)
-            self.setData(VAL_COL, Qt.EditRole, name)
+            self.setData(KEY_COL, Qt.ItemDataRole.EditRole, the_key)
+            self.setData(VAL_COL, Qt.ItemDataRole.EditRole, name)
 
             constructor = type(self)
             for that_key in sorted(model_props):
@@ -68,7 +68,7 @@ class CNPropertyItem(QTreeWidgetItem):
                     continue
                 p_i = constructor(parent=root, key=that_key)
                 self._prop_items[that_key] = p_i
-                p_i.setData(KEY_COL, Qt.EditRole, that_key)
+                p_i.setData(KEY_COL, Qt.ItemDataRole.EditRole, that_key)
                 model_value = model_props[that_key]
                 if that_key.endswith('_type'):
                     model_value = ENUM_NAMES[that_key][model_value]
@@ -81,7 +81,7 @@ class CNPropertyItem(QTreeWidgetItem):
                     model_value = str(model_value)
                 elif not isinstance(model_value, str):  # can't get non-strings to work
                     model_value = str(model_value)
-                p_i.setData(VAL_COL, Qt.EditRole, model_value)
+                p_i.setData(VAL_COL, Qt.ItemDataRole.EditRole, model_value)
         else:
             self._key = key
     # end def
@@ -161,7 +161,7 @@ class CNPropertyItem(QTreeWidgetItem):
             for val in ENUM_NAMES[key]:
                 editor.addItem(val)
         else:
-            data_type = type(model_index.model().data(model_index, Qt.DisplayRole))
+            data_type = type(model_index.model().data(model_index, Qt.ItemDataRole.DisplayRole))
             if data_type is str:
                 editor = QLineEdit(parent_QWidget)
             elif data_type is int:
@@ -186,7 +186,7 @@ class CNPropertyItem(QTreeWidgetItem):
         Returns:
             TYPE: Description
         """
-        value = self.data(VAL_COL, Qt.DisplayRole)
+        value = self.data(VAL_COL, Qt.ItemDataRole.DisplayRole)
         key = self._key
         u_s = self.treeWidget().undoStack()
         u_s.beginMacro("Multi Property Edit: %s" % key)
@@ -216,9 +216,9 @@ class CNPropertyItem(QTreeWidgetItem):
         p_i = self._prop_items[property_key]
         if p_i.is_enum:
             new_value = ENUM_NAMES[property_key][new_value]
-        current_value = p_i.data(VAL_COL, Qt.DisplayRole)
+        current_value = p_i.data(VAL_COL, Qt.ItemDataRole.DisplayRole)
         if current_value != new_value:
-            p_i.setData(VAL_COL, Qt.EditRole, new_value)
+            p_i.setData(VAL_COL, Qt.ItemDataRole.EditRole, new_value)
     # end def
 
     def getItemValue(self, property_key):
@@ -230,6 +230,6 @@ class CNPropertyItem(QTreeWidgetItem):
         Returns:
             TYPE: Description
         """
-        return self._prop_items[property_key].data(VAL_COL, Qt.DisplayRole)
+        return self._prop_items[property_key].data(VAL_COL, Qt.ItemDataRole.DisplayRole)
     # end def
 # end class

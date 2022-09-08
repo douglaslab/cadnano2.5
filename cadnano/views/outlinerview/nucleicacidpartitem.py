@@ -151,7 +151,7 @@ class OutlineNucleicAcidPartItem(CNOutlinerItem, AbstractPartItem):
         root_midx = model.index(self.indexOfChild(vh_list), 0, top_midx)
         tw.selection_filter_disabled = True
         if is_adding:
-            flag = QItemSelectionModel.Select
+            flag = QItemSelectionModel.SelectionFlag.Select
             for id_num in vh_set:
                 vhi = vhi_hash.get(id_num)
                 # selecting a selected item will deselect it, so check
@@ -161,7 +161,7 @@ class OutlineNucleicAcidPartItem(CNOutlinerItem, AbstractPartItem):
                     # print("++++++slot Sselect outlinerview", vh_set)
                     selection_model.select(qmodel_idx, flag)
         else:
-            flag = QItemSelectionModel.Deselect
+            flag = QItemSelectionModel.SelectionFlag.Deselect
             for id_num in vh_set:
                 vhi = vhi_hash.get(id_num)
                 # deselecting a deselected item will select it, so check

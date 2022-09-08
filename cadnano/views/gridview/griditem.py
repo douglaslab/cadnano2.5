@@ -41,7 +41,7 @@ class GridItem(QGraphicsPathItem):
         self.allow_snap = part_item.window().action_vhelix_snap.isChecked()
         self.draw_lines = True
         self.points = []
-        color = QColor(Qt.blue)
+        color = QColor(Qt.GlobalColor.blue)
         color.setAlphaF(0.1)
         self.setPen(color)
         self.setGridType(grid_type)
@@ -129,7 +129,7 @@ class GridItem(QGraphicsPathItem):
                 pt = GridPoint(x - half_dot_size,
                                -y - half_dot_size,
                                dot_size, self)
-                pt.setPen(getPenObj(Qt.blue, 1.0))
+                pt.setPen(getPenObj(Qt.GlobalColor.blue, 1.0))
                 points.append(pt)
             is_pen_down = False
         # end for i
@@ -191,7 +191,7 @@ class GridItem(QGraphicsPathItem):
                 pt = GridPoint(x - half_dot_size,
                                -y - half_dot_size,
                                dot_size, self)
-                pt.setPen(getPenObj(Qt.blue, 1.0))
+                pt.setPen(getPenObj(Qt.GlobalColor.blue, 1.0))
                 points.append(pt)
             is_pen_down = False  # pen up
         # DO VERTICAL LINES

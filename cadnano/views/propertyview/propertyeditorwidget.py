@@ -91,9 +91,9 @@ class PropertyEditorWidget(QTreeWidget):
     #     if parent_QTreeWidgetItem is None:
     #         parent_QTreeWidgetItem = self.invisibleRootItem()
     #     tw_item = QTreeWidgetItem(parent_QTreeWidgetItem)
-    #     tw_item.setData(0, Qt.EditRole, property_name)
-    #     tw_item.setData(1, Qt.EditRole, value)
-    #     tw_item.setFlags(tw_item.flags() | Qt.ItemIsEditable)
+    #     tw_item.setData(0, Qt.ItemDataRole.EditRole, property_name)
+    #     tw_item.setData(1, Qt.ItemDataRole.EditRole, value)
+    #     tw_item.setFlags(tw_item.flags() | Qt.ItemFlag.ItemIsEditable)
     #     return tw_item
     # end def
 
@@ -324,7 +324,7 @@ class CustomStyleItemDelegate(QStyledItemDelegate):
         if column == 0:
             editor.setGeometry(option.rect)
         elif column == 1:
-            value = model_index.model().data(model_index, Qt.EditRole)
+            value = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
             data_type = type(value)
             if data_type is bool:
                 rect = QRect(option.rect)
@@ -351,39 +351,39 @@ class CustomStyleItemDelegate(QStyledItemDelegate):
         # row = model_index.row()
         column = model_index.column()
         if column == 0:  # Part Name
-            option.displayAlignment = Qt.AlignVCenter
+            option.displayAlignment = Qt.AlignmentFlag.AlignVCenter
             QStyledItemDelegate.paint(self, painter, option, model_index)
         if column == 1:  # Visibility
-            value = model_index.model().data(model_index, Qt.EditRole)
+            value = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
             data_type = type(value)
             if data_type is str:
                 # print("val", value)
                 if COLOR_PATTERN.search(value):
                     # print("found color")
-                    element = _QCOMMONSTYLE.PE_IndicatorCheckBox
+                    element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorCheckBox
                     styleoption = QStyleOptionViewItem()
-                    styleoption.palette.setBrush(QPalette.Button, getBrushObj(value))
+                    styleoption.palette.setBrush(QPalette.ColorRole.Button, getBrushObj(value))
                     styleoption.rect = QRect(option.rect)
                     _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
-                option.displayAlignment = Qt.AlignVCenter
+                option.displayAlignment = Qt.AlignmentFlag.AlignVCenter
                 QStyledItemDelegate.paint(self, painter, option, model_index)
             elif data_type is int:
-                option.displayAlignment = Qt.AlignVCenter
+                option.displayAlignment = Qt.AlignmentFlag.AlignVCenter
                 QStyledItemDelegate.paint(self, painter, option, model_index)
             elif data_type is float:
-                option.displayAlignment = Qt.AlignVCenter
+                option.displayAlignment = Qt.AlignmentFlag.AlignVCenter
                 QStyledItemDelegate.paint(self, painter, option, model_index)
             elif data_type is bool:
-                element = _QCOMMONSTYLE.PE_IndicatorCheckBox
+                element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorCheckBox
                 styleoption = QStyleOptionButton()
                 styleoption.rect = QRect(option.rect)
                 checked = value
-                styleoption.state |= QStyle.State_On if checked else QStyle.State_Off
-                styleoption.palette.setBrush(QPalette.Button, Qt.white)
-                styleoption.palette.setBrush(QPalette.HighlightedText, Qt.black)
+                styleoption.state |= QStyle.StateFlag.State_On if checked else QStyle.StateFlag.State_Off
+                styleoption.palette.setBrush(QPalette.ColorRole.Button, Qt.GlobalColor.white)
+                styleoption.palette.setBrush(QPalette.ColorRole.HighlightedText, Qt.GlobalColor.black)
                 _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
                 if checked:
-                    element = _QCOMMONSTYLE.PE_IndicatorMenuCheckMark
+                    element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorMenuCheckMark
                     _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
         else:
             QStyledItemDelegate.paint(self, painter, option, model_index)

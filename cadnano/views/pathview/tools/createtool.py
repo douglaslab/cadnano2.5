@@ -287,7 +287,7 @@ class ForcedStrandItem(QGraphicsLineItem):
         c_a.mousePressEvent = self.mousePressEvent
         c_a.setPen(_NO_PEN)
 
-        # c_a.setBrush(QBrush(Qt.white))
+        # c_a.setBrush(QBrush(Qt.GlobalColor.white))
         self.setZValue(styles.ZENDPOINTITEM+1)
         c_a.setZValue(styles.ZENDPOINTITEM)
         self._low_cap.setZValue(styles.ZENDPOINTITEM+2)
@@ -519,7 +519,7 @@ class ForcedXoverNode3(QGraphicsRectItem):
         self._partner_virtual_helix = virtual_helix_item
 
         self._blank_thing = QGraphicsRectItem(_blankRect, self)
-        self._blank_thing.setBrush(QBrush(Qt.white))
+        self._blank_thing.setBrush(QBrush(Qt.GlobalColor.white))
         self._path_thing = QGraphicsPathItem(self)
         self.configurePath()
 

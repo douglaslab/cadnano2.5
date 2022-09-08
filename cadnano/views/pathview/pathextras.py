@@ -439,7 +439,7 @@ class PreXoverItem(QGraphicsRectItem):
             bonditem = self._bond_item
             bonditem.setPen(getPenObj(  self.color,
                                         styles.PREXOVER_STROKE_WIDTH,
-                                        penstyle=Qt.DotLine))
+                                        penstyle=Qt.PenStyle.DotLine))
             bonditem.hide()
     # end def
 
@@ -489,7 +489,7 @@ class PreXoverItem(QGraphicsRectItem):
             self._tick_marks.setPen(getPenObj(  self.color,
                                                 styles.PREXOVER_STROKE_WIDTH,
                                                 capstyle=Qt.PenCapStyle.FlatCap,
-                                                joinstyle=Qt.RoundJoin))
+                                                joinstyle=Qt.PenJoinStyle.RoundJoin))
             self._tick_marks.setPath(path)
             self._tick_marks.show()
             return True
@@ -917,23 +917,23 @@ class PathWorkplaneItem(QGraphicsRectItem):
     ### EVENT HANDLERS ###
     def hoverEnterEvent(self, event):
         if event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
-            self.setCursor(Qt.OpenHandCursor)
+            self.setCursor(Qt.CursorShape.OpenHandCursor)
         else:
-            self.setCursor(Qt.ArrowCursor)
+            self.setCursor(Qt.CursorShape.ArrowCursor)
         self._part_item.updateStatusBar("{}–{}".format(self._idx_low, self._idx_high))
         QGraphicsItem.hoverEnterEvent(self, event)
     # end def
 
     def hoverMoveEvent(self, event):
         if event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
-            self.setCursor(Qt.OpenHandCursor)
+            self.setCursor(Qt.CursorShape.OpenHandCursor)
         else:
-            self.setCursor(Qt.ArrowCursor)
+            self.setCursor(Qt.CursorShape.ArrowCursor)
         QGraphicsItem.hoverMoveEvent(self, event)
     # end def
 
     def hoverLeaveEvent(self, event):
-        self.setCursor(Qt.ArrowCursor)
+        self.setCursor(Qt.CursorShape.ArrowCursor)
         self._part_item.updateStatusBar("")
         QGraphicsItem.hoverLeaveEvent(self, event)
     # end def
@@ -977,7 +977,7 @@ class PathWorkplaneItem(QGraphicsRectItem):
         """
         Repeates mouseMove calculation in case any new movement.
         """
-        self.setCursor(Qt.ArrowCursor)
+        self.setCursor(Qt.CursorShape.ArrowCursor)
         delta = int(floor((self.x()+event.pos().x()) / BASE_WIDTH)) - self._offset_idx
         delta = util.clamp(delta,
                            self._low_drag_bound-self._start_idx_low,

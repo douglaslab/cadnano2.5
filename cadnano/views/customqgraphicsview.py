@@ -538,7 +538,7 @@ class CustomQGraphicsView(QGraphicsView):
         scene_rect = thescene.sceneRect()
         if self.toolbar:  # HACK, pt2: move toolbar back
             self.toolbar.setPos(self.mapToScene(0, 0))
-        self.fitInView(scene_rect, Qt.KeepAspectRatio)  # fit in view
+        self.fitInView(scene_rect, Qt.AspectRatioMode.KeepAspectRatio)  # fit in view
         self._resetScale()  # adjust scaling so that translation works
         # adjust scaling so that the items don't fill 100% of the view
         # this is good for selection

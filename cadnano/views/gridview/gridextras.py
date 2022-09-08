@@ -201,7 +201,7 @@ class Triangle(QGraphicsPathItem):
         if is_fwd:
             # grad = QLinearGradient(0., 0., 0., 1.)
             # grad.setColorAt(0, getColorObj(color))
-            # grad.setColorAt(1, Qt.black)
+            # grad.setColorAt(1, Qt.GlobalColor.black)
             # self.setBrush(grad)
             self.setBrush(getBrushObj(color, alpha=128))
             self.setPath(FWDPXI_PP)
@@ -212,7 +212,7 @@ class Triangle(QGraphicsPathItem):
             self.setPen(getPenObj(color, 0.25, alpha=128))
             # grad = QLinearGradient(0., 0., 0., -1.)
             # grad.setColorAt(1, getColorObj(color))
-            # grad.setColorAt(0, Qt.black)
+            # grad.setColorAt(0, Qt.GlobalColor.black)
             # self.setPen(getNoPen())
             # self.setBrush(grad)
             self._click_area.setPos(-0.5*IW, -0.25*IW)
@@ -243,7 +243,7 @@ class PhosBond(QGraphicsLineItem):
         else:  # darker, dotted
             self.setPen(getPenObj(color, 0.25,
                                   alpha=64,
-                                  penstyle=Qt.DotLine,
+                                  penstyle=Qt.PenStyle.DotLine,
                                   capstyle=Qt.PenCapStyle.RoundCap))
     # end def
 # end class

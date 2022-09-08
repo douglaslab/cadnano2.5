@@ -27,7 +27,7 @@ class GridItem(QGraphicsRectItem):
             grid_type (TYPE): Description
         """
         super(GridItem, self).__init__(parent=part_item)
-        self.setFlag(QGraphicsItem.ItemClipsChildrenToShape)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemClipsChildrenToShape)
 
         self._path = None
         self.part_item = part_item

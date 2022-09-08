@@ -125,7 +125,7 @@ class OutlinerTreeWidget(QTreeWidget):
         filter_set.add('part')
         out_deselection = []
         out_selection = []
-        flags = QItemSelectionModel.Current | QItemSelectionModel.Deselect
+        flags = QItemSelectionModel.SelectionFlag.Deselect | QItemSelectionModel.SelectionFlag.Deselect
         for index in selected_items.indexes():
             item = self.itemFromIndex(index)
             if is_not_select_tool or item.FILTER_NAME not in filter_set:
@@ -166,12 +166,12 @@ class OutlinerTreeWidget(QTreeWidget):
         # 1. handle clicks on check marks to speed things up over using an editor
         if column == LOCKED_COL or column == VISIBLE_COL:
             self.blockSignals(True)
-            if tree_widget_item.data(column, Qt.DisplayRole):
+            if tree_widget_item.data(column, Qt.ItemDataRole.DisplayRole):
                 # print("unchecking", tree_widget_item.__class__.__name__)
-                tree_widget_item.setData(column, Qt.EditRole, False)
+                tree_widget_item.setData(column, Qt.ItemDataRole.EditRole, False)
             else:
                 # print("checking", tree_widget_item.__class__.__name__)
-                tree_widget_item.setData(column, Qt.EditRole, True)
+                tree_widget_item.setData(column, Qt.ItemDataRole.EditRole, True)
             self.blockSignals(False)
         # end if
 
@@ -312,7 +312,7 @@ class OutlinerTreeWidget(QTreeWidget):
         column = VISIBLE_COL
         for item in self.selectedItems():
             if isinstance(item, (OutlineVirtualHelixItem, OutlineOligoItem)):
-                item.setData(column, Qt.EditRole, False)
+                item.setData(column, Qt.ItemDataRole.EditRole, False)
                 # print("hiding", item.__class__.__name__)
             else:
                 print("item unhidable", item.__class__.__name__)
@@ -322,7 +322,7 @@ class OutlinerTreeWidget(QTreeWidget):
         column = VISIBLE_COL
         for item in self.selectedItems():
             if isinstance(item, (OutlineVirtualHelixItem, OutlineOligoItem)):
-                item.setData(column, Qt.EditRole, True)
+                item.setData(column, Qt.ItemDataRole.EditRole, True)
                 # print("showing", item.__class__.__name__)
             else:
                 print("item unshowable", item.__class__.__name__)
@@ -365,7 +365,7 @@ class OutlinerTreeWidget(QTreeWidget):
         color_name = color.name()
         for item in self.selectedItems():
             if isinstance(item, (OutlineVirtualHelixItem, OutlineOligoItem)):
-                item.setData(column, Qt.EditRole, color_name)
+                item.setData(column, Qt.ItemDataRole.EditRole, color_name)
                 # print("coloring", item.__class__.__name__, item.idNum())
             else:
                 print("item uncolorable", item.__class__.__name__)
@@ -425,10 +425,10 @@ class OutlinerTreeWidget(QTreeWidget):
     #     if parent_QTreeWidgetItem is None:
     #         parent_QTreeWidgetItem = self.invisibleRootItem()
     #     tw_item = QTreeWidgetItem(parent_QTreeWidgetItem)
-    #     tw_item.setData(0, Qt.EditRole, part_name)
-    #     tw_item.setData(1, Qt.EditRole, visible)
-    #     tw_item.setData(2, Qt.EditRole, color)
-    #     tw_item.setFlags(tw_item.flags() | Qt.ItemIsEditable)
+    #     tw_item.setData(0, Qt.ItemDataRole.EditRole, part_name)
+    #     tw_item.setData(1, Qt.ItemDataRole.EditRole, visible)
+    #     tw_item.setData(2, Qt.ItemDataRole.EditRole, color)
+    #     tw_item.setFlags(tw_item.flags() | Qt.ItemFlag.ItemIsEditable)
     #     return tw_item
     # # end def
 
@@ -542,7 +542,7 @@ class CustomStyleItemDelegate(QStyledItemDelegate):
             item = self.parent().itemFromIndex(model_index)
             if item.CAN_NAME_EDIT:
                 editor = QLineEdit(parent_QWidget)
-                editor.setAlignment(Qt.AlignVCenter)
+                editor.setAlignment(Qt.AlignmentFlag.AlignVCenter)
                 return editor
         elif column == 1:  # Visibility checkbox
             # editor = QCheckBox(parent_QWidget)
@@ -562,13 +562,13 @@ class CustomStyleItemDelegate(QStyledItemDelegate):
     def setEditorData(self, editor, model_index):
         column = model_index.column()
         if column == NAME_COL:  # Part Name
-            text_QString = model_index.model().data(model_index, Qt.EditRole)
+            text_QString = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
             editor.setText(text_QString)
         # elif column == VISIBLE_COL: # Visibility
-        #     value = model_index.model().data(model_index, Qt.EditRole)
+        #     value = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
         #     editor.setChecked(value)
         elif column == COLOR_COL:  # Color
-            value = model_index.model().data(model_index, Qt.EditRole)
+            value = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
             editor.setCurrentColor(QColor(value))
         else:
             QStyledItemDelegate.setEditorData(self, editor, model_index)
@@ -578,13 +578,13 @@ class CustomStyleItemDelegate(QStyledItemDelegate):
         column = model_index.column()
         if column == NAME_COL:  # Part Name
             text_QString = editor.text()
-            model.setData(model_index, text_QString, Qt.EditRole)
+            model.setData(model_index, text_QString, Qt.ItemDataRole.EditRole)
         # elif column == VISIBLE_COL: # Visibility
         #     value = editor.isChecked()
-        #     model.setData(model_index, value, Qt.EditRole)
+        #     model.setData(model_index, value, Qt.ItemDataRole.EditRole)
         elif column == COLOR_COL:  # Color
             color = editor.currentColor()
-            model.setData(model_index, color.name(), Qt.EditRole)
+            model.setData(model_index, color.name(), Qt.ItemDataRole.EditRole)
         else:
             QStyledItemDelegate.setModelData(self, editor, model, model_index)
     # end def
@@ -608,39 +608,39 @@ class CustomStyleItemDelegate(QStyledItemDelegate):
         column = model_index.column()
         new_rect = QRect(option.rect)
         if column == NAME_COL:  # Part Name
-            option.displayAlignment = Qt.AlignVCenter
+            option.displayAlignment = Qt.AlignmentFlag.AlignVCenter
             QStyledItemDelegate.paint(self, painter, option, model_index)
         if column == LOCKED_COL:  # Visibility
-            element = _QCOMMONSTYLE.PE_IndicatorCheckBox
+            element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorCheckBox
             styleoption = QStyleOptionButton()
             styleoption.rect = new_rect
-            checked = model_index.model().data(model_index, Qt.EditRole)
-            styleoption.state |= QStyle.State_On if checked else QStyle.State_Off
+            checked = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
+            styleoption.state |= QStyle.StateFlag.State_On if checked else QStyle.StateFlag.State_Off
             # make the check box look a little more active by changing the pallete
-            styleoption.palette.setBrush(QPalette.Button, Qt.white)
-            styleoption.palette.setBrush(QPalette.HighlightedText, Qt.black)
+            styleoption.palette.setBrush(QPalette.ColorRole.Button, Qt.GlobalColor.white)
+            styleoption.palette.setBrush(QPalette.ColorRole.HighlightedText, Qt.GlobalColor.black)
             _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
             if checked:
-                # element = _QCOMMONSTYLE.PE_IndicatorMenuCheckMark
+                # element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorMenuCheckMark
                 # _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
-                # _QCOMMONSTYLE.drawItemText(painter, new_rect, Qt.AlignCenter, styleoption.palette, True, 'L')
+                # _QCOMMONSTYLE.drawItemText(painter, new_rect, Qt.AlignmentFlag.AlignCenter, styleoption.palette, True, 'L')
                 icon = QPixmap(":/outlinericons/lock")
-                _QCOMMONSTYLE.drawItemPixmap(painter, new_rect, Qt.AlignCenter, icon)
+                _QCOMMONSTYLE.drawItemPixmap(painter, new_rect, Qt.AlignmentFlag.AlignCenter, icon)
         if column == VISIBLE_COL:  # Visibility
-            element = _QCOMMONSTYLE.PE_IndicatorCheckBox
+            element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorCheckBox
             styleoption = QStyleOptionButton()
             styleoption.rect = new_rect
-            checked = model_index.model().data(model_index, Qt.EditRole)
-            styleoption.state |= QStyle.State_On if checked else QStyle.State_Off
+            checked = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
+            styleoption.state |= QStyle.StateFlag.State_On if checked else QStyle.StateFlag.State_Off
             # make the check box look a little more active by changing the pallete
-            styleoption.palette.setBrush(QPalette.Button, Qt.white)
-            styleoption.palette.setBrush(QPalette.HighlightedText, Qt.black)
+            styleoption.palette.setBrush(QPalette.ColorRole.Button, Qt.GlobalColor.white)
+            styleoption.palette.setBrush(QPalette.ColorRole.HighlightedText, Qt.GlobalColor.black)
             _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
             if checked:
-                # element = _QCOMMONSTYLE.PE_IndicatorMenuCheckMark
+                # element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorMenuCheckMark
                 # _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
                 icon = QPixmap(":/outlinericons/eye")
-                _QCOMMONSTYLE.drawItemPixmap(painter, new_rect, Qt.AlignCenter, icon)
+                _QCOMMONSTYLE.drawItemPixmap(painter, new_rect, Qt.AlignmentFlag.AlignCenter, icon)
         elif column == COLOR_COL:  # Color
 
             # Alternate way to get color
@@ -649,11 +649,11 @@ class CustomStyleItemDelegate(QStyledItemDelegate):
             # color = item.getColor()
             # print("COLOR_COL", item)
 
-            color = model_index.model().data(model_index, Qt.EditRole)
-            element = _QCOMMONSTYLE.PE_IndicatorCheckBox
+            color = model_index.model().data(model_index, Qt.ItemDataRole.EditRole)
+            element = _QCOMMONSTYLE.PrimitiveElement.PE_IndicatorCheckBox
             styleoption = QStyleOptionViewItem()
             brush = getBrushObj(color)
-            styleoption.palette.setBrush(QPalette.Button, brush)
+            styleoption.palette.setBrush(QPalette.ColorRole.Button, brush)
             styleoption.rect = new_rect
             _QCOMMONSTYLE.drawPrimitive(element, styleoption, painter)
         else:

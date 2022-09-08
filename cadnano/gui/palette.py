@@ -57,7 +57,7 @@ def getPenObj(hex_string, stroke_width,
         lighter (int): see `QColor.lighter <http://doc.qt.io/qt-5/qcolor.html#lighter>`_.
         penstyle (Qt.PenStyle): see `QPen.pen-style <http://doc.qt.io/qt-5/qpen.html#pen-style>`_.
         capstyle (Qt.CapStyle): see `QPen.cap-style <http://doc.qt.io/qt-5/qpen.html#cap-style>`_.
-        joinstyle (Qt.JoinStyle): see `QPen.join-style <http://doc.qt.io/qt-5/qpen.html#join-style>`_.
+        joinstyle (Qt.PenJoinStyle.RoundJoin): see `QPen.join-style <http://doc.qt.io/qt-5/qpen.html#join-style>`_.
 
     Returns:
         pen (QPen)

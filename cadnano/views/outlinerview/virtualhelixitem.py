@@ -39,16 +39,16 @@ class OutlineVirtualHelixItem(AbstractVirtualHelixItem, CNOutlinerItem):
         """
         """
         # cn_model = self._model_part
-        new_name = self.data(NAME_COL, Qt.DisplayRole)
-        new_is_visible = self.data(VISIBLE_COL, Qt.DisplayRole)
-        new_color = self.data(COLOR_COL, Qt.DisplayRole)
+        new_name = self.data(NAME_COL, Qt.ItemDataRole.DisplayRole)
+        new_is_visible = self.data(VISIBLE_COL, Qt.ItemDataRole.DisplayRole)
+        new_color = self.data(COLOR_COL, Qt.ItemDataRole.DisplayRole)
         vh = self._model_vh
         name, is_visible, color = vh.getProperty(['name', 'is_visible', 'color'])
         # work around to disable name editing for OutlineVirtualHelixItems
         # QTreeWidgetItem can't have only single columns editable, its all or none
         if new_name != name:
             self.treeWidget().model().blockSignals(True)
-            self.setData(NAME_COL, Qt.DisplayRole, name)
+            self.setData(NAME_COL, Qt.ItemDataRole.DisplayRole, name)
             self.treeWidget().model().blockSignals(False)
         if new_is_visible != is_visible:
             vh.setProperty('is_visible', new_is_visible)
