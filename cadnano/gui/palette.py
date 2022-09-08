@@ -11,9 +11,9 @@ from PyQt6.QtCore import Qt
 color_cache = {}
 pen_cache = {}
 brush_cache = {}
-no_pen = QPen(Qt.NoPen)
-no_brush = QBrush(Qt.NoBrush)
-solid_brush = QBrush(Qt.SolidPattern)
+no_pen = QPen(Qt.PenStyle.NoPen)
+no_brush = QBrush(Qt.BrushStyle.NoBrush)
+solid_brush = QBrush(Qt.BrushStyle.SolidPattern)
 
 
 def getColorObj(hex_string, alpha=None, lighter=None):
@@ -151,30 +151,30 @@ def newBrushObj(hex_string, alpha=None):
 
 
 def getNoPen():
-    """Global instance of QPen(Qt.NoPen).
+    """Global instance of QPen(Qt.PenStyle.NoPen).
 
     Returns:
-        QPen(Qt.NoPen)
+        QPen(Qt.PenStyle.NoPen)
     """
     global no_pen
     return no_pen
 
 
 def getNoBrush():
-    """Global instance of QBrush(Qt.NoBrush).
+    """Global instance of QBrush(Qt.BrushStyle.NoBrush).
 
     Returns:
-        QBrush(Qt.NoBrush)
+        QBrush(Qt.BrushStyle.NoBrush)
     """
     global no_brush
     return no_brush
 
 
 def getSolidBrush():
-    """Global instance of QBrush(Qt.SolidPattern).
+    """Global instance of QBrush(Qt.BrushStyle.SolidPattern).
 
     Returns:
-        QBrush(Qt.SolidPattern)
+        QBrush(Qt.BrushStyle.SolidPattern)
     """
     global solid_brush
     return solid_brush

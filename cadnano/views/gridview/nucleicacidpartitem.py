@@ -576,7 +576,7 @@ class GridNucleicAcidPartItem(QAbstractPartItem):
         Args:
             TYPE: Description
         """
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             return
         part = self._model_part
         part.setSelected(True)

@@ -2,8 +2,9 @@
 """Summary
 """
 from PyQt6.QtCore import QPointF, Qt
+from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import (QGraphicsItemGroup, QGraphicsRectItem,
-                             QGraphicsItem, QMenu, QAction)
+                             QGraphicsItem, QMenu)
 from cadnano.views.gridview.virtualhelixitem import GridVirtualHelixItem
 from cadnano.gui.palette import getPenObj
 from cadnano.fileio import v3encode, v3decode
@@ -141,7 +142,7 @@ class SelectGridTool(AbstractGridTool):
             except RuntimeError:
                 self.group = GridSelectionGroup(self, parent=part_item)
 
-            # required for whatever reason to re-enable QGraphicsView.RubberBandDrag
+            # required for whatever reason to re-enable QGraphicsView.DragMode.RubberBandDrag
             self.slice_graphics_view.activateSelection(True)
 
             self.slice_graphics_view.rubberBandChanged.connect(self.selectRubberband)
@@ -279,11 +280,11 @@ class SelectGridTool(AbstractGridTool):
                 selection to
         """
         self.setPartItem(part_item)
-        if (self.snap_origin_item is not None and event.modifiers() == Qt.AltModifier):
+        if (self.snap_origin_item is not None and event.modifiers() == Qt.KeyboardModifier.AltModifier):
             self.doSnap(part_item, target_item)
             self.individual_pick = False
         else:  # just do a selection
-            if event.modifiers() != Qt.ShiftModifier:
+            if event.modifiers() != Qt.KeyboardModifier.ShiftModifier:
                 self.modelClear()   # deselect if shift isn't held
 
             if isinstance(target_item, GridVirtualHelixItem):
@@ -446,7 +447,7 @@ class GridSelectionGroup(QGraphicsItemGroup):
         super(GridSelectionGroup, self).__init__(parent)
         self.tool = tool
         self.setFiltersChildEvents(True)
-        self.setFlag(QGraphicsItem.ItemIsFocusable)  # for keyPressEvents
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsFocusable)  # for keyPressEvents
         self.setFlag(QGraphicsItem.ItemIsMovable)
 
         self.bounding_rect_item = bri = QGraphicsRectItem(tool)
@@ -511,7 +512,7 @@ class GridSelectionGroup(QGraphicsItemGroup):
             TYPE: Description
         """
         tool = self.tool
-        if event.button() != Qt.LeftButton:
+        if event.button() != Qt.MouseButton.LeftButton:
             """ do context menu?
             """
             # slice_graphics_view = self.tool.slice_graphics_view
@@ -522,7 +523,7 @@ class GridSelectionGroup(QGraphicsItemGroup):
         else:
             # print("the right event")
             modifiers = event.modifiers()
-            is_shift = modifiers == Qt.ShiftModifier
+            is_shift = modifiers == Qt.KeyboardModifier.ShiftModifier
             print("Is_shift is %s" % is_shift)
             # check to see if we are clicking on a previously selected item
             if tool.is_selection_active:
@@ -538,7 +539,7 @@ class GridSelectionGroup(QGraphicsItemGroup):
                                 doc.removeVirtualHelicesFromSelection(part, [id_num])
                         else:
                             origin_id_num = item.idNum()
-                            is_alt = modifiers == Qt.AltModifier
+                            is_alt = modifiers == Qt.KeyboardModifier.AltModifier
                             if (doc.isVirtualHelixSelected(part, origin_id_num) and
                                     not is_alt):
                                 print("origin", origin_id_num)
@@ -568,7 +569,7 @@ class GridSelectionGroup(QGraphicsItemGroup):
         res = QGraphicsItemGroup.mouseMoveEvent(self, event)
         # watch out for bugs here?  everything seems OK for now, but
         # could be weird window switching edge cases
-        if not self.tool.individual_pick and event.buttons() == Qt.LeftButton:
+        if not self.tool.individual_pick and event.buttons() == Qt.MouseButton.LeftButton:
             new_pos = self.pos()
             delta = new_pos - self.drag_last_position
             self.drag_last_position = new_pos
@@ -588,7 +589,7 @@ class GridSelectionGroup(QGraphicsItemGroup):
         """
         MOVE_THRESHOLD = 0.01   # ignore small moves
         # print("mouse mouseReleaseEvent", self.tool.individual_pick)
-        if not self.tool.individual_pick and event.button() == Qt.LeftButton:
+        if not self.tool.individual_pick and event.button() == Qt.MouseButton.LeftButton:
             delta = self.pos() - self.drag_start_position
             dx, dy = delta.x(), delta.y()
             # print(abs(dx), abs(dy))

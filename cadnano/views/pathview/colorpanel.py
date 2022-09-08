@@ -21,7 +21,7 @@ class ColorPanel(QGraphicsItem):
     """
     _shift_colors = [getColorObj(x) for x in styles.SCAF_COLORS]
     _colors = [getColorObj(x) for x in styles.STAP_COLORS]
-    _PEN = Qt.NoPen
+    _PEN = Qt.PenStyle.NoPen
 
     def __init__(self, parent=None):
         """Summary

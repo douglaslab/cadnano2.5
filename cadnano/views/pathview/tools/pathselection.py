@@ -40,9 +40,9 @@ class SelectionItemGroup(QGraphicsItemGroup):
         # LOOK at Qt Source for deprecated code to replace this behavior
         # self.setHandlesChildEvents(True) # commented out NC
 
-        self.setFlag(QGraphicsItem.ItemIsSelectable)
-        self.setFlag(QGraphicsItem.ItemIsFocusable)  # for keyPressEvents
-        self.setFlag(QGraphicsItem.ItemHasNoContents)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsFocusable)  # for keyPressEvents
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
 
         self._rect = QRectF()
         self._PEN = getPenObj(styles.BLUE_STROKE,
@@ -197,7 +197,7 @@ class SelectionItemGroup(QGraphicsItemGroup):
             event (TYPE): Description
         """
         key = event.key()
-        if key in [Qt.Key_Backspace, Qt.Key_Delete]:
+        if key in [Qt.Key.Key_Backspace, Qt.Key.Key_Delete]:
             self.selectionbox.deleteSelection()
             self.clearSelection(False)
             return QGraphicsItemGroup.keyPressEvent(self, event)
@@ -216,7 +216,7 @@ class SelectionItemGroup(QGraphicsItemGroup):
             TYPE: Description
         """
         # self.show()
-        if event.button() != Qt.LeftButton:
+        if event.button() != Qt.MouseButton.LeftButton:
             return QGraphicsItemGroup.mousePressEvent(self, event)
         else:
             self._drag_enable = True
@@ -703,7 +703,7 @@ class EndpointHandleSelectionBox(QGraphicsPathItem):
         delta = self.delta(r_end, r_start)
 
         # TODO reenable do_maximize?????
-        # if modifiers & Qt.AltModifier:
+        # if modifiers & Qt.KeyboardModifier.AltModifier:
         #     do_maximize = True
         # else:
         #     do_maximize = False

@@ -2,9 +2,9 @@
 """Summary
 """
 from PyQt6.QtCore import QPointF, Qt
-from PyQt6.QtGui import QPainterPath
+from PyQt6.QtGui import QAction, QPainterPath
 from PyQt6.QtWidgets import (QGraphicsItemGroup, QGraphicsPathItem,  # QGraphicsRectItem,
-                             QGraphicsItem, QMenu, QAction)
+                             QGraphicsItem, QMenu)
 from cadnano.fileio import v3encode, v3decode
 from cadnano.views.sliceview.virtualhelixitem import SliceVirtualHelixItem
 from cadnano.gui.palette import getPenObj
@@ -143,7 +143,7 @@ class SelectSliceTool(AbstractSliceTool):
             except RuntimeError:
                 self.group = SliceSelectionGroup(self, parent=part_item)
 
-            # required for whatever reason to renable QGraphicsView.RubberBandDrag
+            # required for whatever reason to renable QGraphicsView.DragMode.RubberBandDrag
             # TODO[NF]:  Determine why self.slice_graphics_view is None when the dual-slice view is enabled
             # TODO[NF]:  Now that SVG is being set properly, can the conditional be removed?
             # TODO[NF]:  This might be better kept as an error condition logged to logger.error
@@ -287,11 +287,11 @@ class SelectSliceTool(AbstractSliceTool):
                 selection to
         """
         self.setPartItem(part_item)
-        if (self.snap_origin_item is not None and event.modifiers() == Qt.AltModifier):
+        if (self.snap_origin_item is not None and event.modifiers() == Qt.KeyboardModifier.AltModifier):
             self.doSnap(part_item, target_item)
             self.individual_pick = False
         else:  # just do a selection
-            if event.modifiers() != Qt.ShiftModifier:
+            if event.modifiers() != Qt.KeyboardModifier.ShiftModifier:
                 self.modelClear()   # deselect if shift isn't held
 
             if isinstance(target_item, SliceVirtualHelixItem):
@@ -506,7 +506,7 @@ class SliceSelectionGroup(QGraphicsItemGroup):
         super(SliceSelectionGroup, self).__init__(parent)
         self.tool = tool
         self.setFiltersChildEvents(True)
-        self.setFlag(QGraphicsItem.ItemIsFocusable)  # for keyPressEvents
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsFocusable)  # for keyPressEvents
         self.setFlag(QGraphicsItem.ItemIsMovable)
 
         # self.bounding_rect_item = bri = QGraphicsRectItem(tool)
@@ -589,7 +589,7 @@ class SliceSelectionGroup(QGraphicsItemGroup):
         res = QGraphicsItemGroup.mouseMoveEvent(self, event)
         # watch out for bugs here?  everything seems OK for now, but
         # could be weird window switching edge cases
-        if not self.tool.individual_pick and event.buttons() == Qt.LeftButton:
+        if not self.tool.individual_pick and event.buttons() == Qt.MouseButton.LeftButton:
             new_pos = self.pos()
             delta = new_pos - self.drag_last_position
             self.drag_last_position = new_pos
@@ -609,7 +609,7 @@ class SliceSelectionGroup(QGraphicsItemGroup):
         """
         MOVE_THRESHOLD = 0.01   # ignore small moves
         # print("mouse mouseReleaseEvent", self.tool.individual_pick)
-        if not self.tool.individual_pick and event.button() == Qt.LeftButton:
+        if not self.tool.individual_pick and event.button() == Qt.MouseButton.LeftButton:
             delta = self.pos() - self.drag_start_position
             dx, dy = delta.x(), delta.y()
             # print(abs(dx), abs(dy))

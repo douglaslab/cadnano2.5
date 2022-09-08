@@ -51,7 +51,7 @@ class SliceNucleicAcidPartItem(QAbstractPartItem):
             parent (None, optional): Description
         """
         super(SliceNucleicAcidPartItem, self).__init__(model_part_instance, viewroot, parent)
-        self.setFlag(QGraphicsItem.ItemIsFocusable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsFocusable)
 
         self.shortest_path_start = None
         self.coordinates_to_vhid = dict()
@@ -668,7 +668,7 @@ class SliceNucleicAcidPartItem(QAbstractPartItem):
         Args:
             event (QMouseEvent): contains parameters that describe a mouse event.
         """
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             return
         part = self._model_part
         part.setSelected(True)
@@ -727,11 +727,11 @@ class SliceNucleicAcidPartItem(QAbstractPartItem):
     # end def
 
     def keyPressEvent(self, event):
-        is_alt = bool(event.modifiers() & Qt.AltModifier)
+        is_alt = bool(event.modifiers() & Qt.KeyboardModifier.AltModifier)
         isInLatticeCoord = HoneycombDnaPart.isInLatticeCoord if self.griditem.grid_type is GridType.HONEYCOMB \
             else SquareDnaPart.isInLatticeCoord
 
-        if event.key() == Qt.Key_Escape:
+        if event.key() == Qt.Key.Key_Escape:
 #            print("Esc here")
             self._setShortestPathStart(None)
             self.removeAllCreateHints()
@@ -761,7 +761,7 @@ class SliceNucleicAcidPartItem(QAbstractPartItem):
     # end def
 
     def keyReleaseEvent(self, event):
-        is_alt = bool(event.modifiers() & Qt.AltModifier)
+        is_alt = bool(event.modifiers() & Qt.KeyboardModifier.AltModifier)
         if not is_alt:
             self.removeAllCreateHints()
             isInLatticeCoord = HoneycombDnaPart.isInLatticeCoord if self.griditem.grid_type is GridType.HONEYCOMB \
@@ -800,7 +800,7 @@ class SliceNucleicAcidPartItem(QAbstractPartItem):
         part_pt_tuple = self.getModelPos(pt)
         modifiers = event.modifiers()
 
-        is_spa_mode = modifiers == Qt.AltModifier
+        is_spa_mode = modifiers == Qt.KeyboardModifier.AltModifier
         last_added_spa_vhi_id = self._handleShortestPathMousePress(tool=tool,
                                                                    position=position,
                                                                    is_spa_mode=is_spa_mode)
@@ -937,7 +937,7 @@ class SliceNucleicAcidPartItem(QAbstractPartItem):
         Returns:
             TYPE: Description
         """
-        is_alt = True if event.modifiers() & Qt.AltModifier else False
+        is_alt = True if event.modifiers() & Qt.KeyboardModifier.AltModifier else False
         mapped_position = self.griditem.mapFromScene(event.scenePos())
         event_xy = (mapped_position.x(), mapped_position.y())
         if self.griditem.grid_type is GridType.HONEYCOMB:

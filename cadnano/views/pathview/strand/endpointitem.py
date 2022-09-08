@@ -8,7 +8,6 @@ from math import floor
 
 from PyQt6.QtCore import QPointF, QRectF, Qt
 from PyQt6.QtGui import QBrush, QPen, QPainterPath, QPolygonF
-from PyQt6.QtWidgets import qApp
 from PyQt6.QtWidgets import QGraphicsItem, QGraphicsPathItem
 from PyQt6.QtWidgets import QGraphicsRectItem, QGraphicsEllipseItem
 
@@ -64,7 +63,7 @@ POLY_35.append(QPointF(0.5 * _BASE_WIDTH, _BASE_WIDTH))
 PP_35.addPolygon(POLY_35)
 
 _DEFAULT_RECT = QRectF(0, 0, _BASE_WIDTH, _BASE_WIDTH)
-_NO_PEN = QPen(Qt.NoPen)
+_NO_PEN = QPen(Qt.PenStyle.NoPen)
 
 MOD_RECT = QRectF(.25*_BASE_WIDTH, -.25*_BASE_WIDTH, 0.5*_BASE_WIDTH, 0.5*_BASE_WIDTH)
 
@@ -98,7 +97,7 @@ class EndpointItem(QGraphicsPathItem):
         cA.mousePressEvent = self.mousePressEvent
         cA.mouseMoveEvent = self.mouseMoveEvent
         cA.setPen(_NO_PEN)
-        self.setFlag(QGraphicsItem.ItemIsSelectable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
     # end def
 
     ### SIGNALS ###
@@ -301,7 +300,7 @@ class EndpointItem(QGraphicsPathItem):
     def breakToolMouseRelease(self, modifiers, x):
         """Shift-click to merge without switching back to select tool."""
         m_strand = self._strand_item._model_strand
-        if modifiers & Qt.ShiftModifier:
+        if modifiers & Qt.KeyboardModifier.ShiftModifier:
             m_strand.merge(self.idx())
     # end def
 
@@ -320,7 +319,7 @@ class EndpointItem(QGraphicsPathItem):
     def paintToolMousePress(self, modifiers, event, idx):
         """Add an insert to the strand if possible."""
         m_strand = self._strand_item._model_strand
-        if qApp.keyboardModifiers() & Qt.ShiftModifier:
+        if qApp.keyboardModifiers() & Qt.KeyboardModifier.ShiftModifier:
             color = self.window().path_color_panel.shiftColorName()
         else:
             color = self.window().path_color_panel.colorName()
@@ -413,7 +412,7 @@ class EndpointItem(QGraphicsPathItem):
         """
         m_strand = self._strand_item._model_strand
 
-        if modifiers & Qt.ShiftModifier:
+        if modifiers & Qt.KeyboardModifier.ShiftModifier:
             self.setSelected(False)
             self.restoreParent()
             m_strand.merge(self.idx())

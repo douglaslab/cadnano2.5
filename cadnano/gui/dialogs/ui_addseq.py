@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_AddSeqDialog(object):
     def setupUi(self, AddSeqDialog):
@@ -21,7 +21,7 @@ class Ui_AddSeqDialog(object):
         self.custom_button_box.setObjectName("custom_button_box")
         self.dialogGridLayout.addWidget(self.custom_button_box, 1, 0, 1, 1)
         self.frame = QtWidgets.QFrame(AddSeqDialog)
-        self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.frame)

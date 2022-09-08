@@ -27,13 +27,13 @@ def testCreateVirtualHelixGui(cnapp):
     # Create a new Honeycomb part
     toolbar = cnapp.window.main_toolbar
     action_new_honeycomb = toolbar.widgetForAction(cnapp.window.action_new_dnapart_honeycomb)
-    QTest.mouseClick(action_new_honeycomb, Qt.LeftButton, delay=DELAY)
+    QTest.mouseClick(action_new_honeycomb, Qt.MouseButton.LeftButton, delay=DELAY)
 
     slicerootitem = cnapp.window.slice_root
     assert len(slicerootitem.instance_items) == 1
     slice_part_item = list(slicerootitem.instance_items.values())[0]
-    QTest.keyClick(cnapp.window, Qt.Key_H, delay=DELAY)
-    QTest.keyClick(cnapp.window, Qt.Key_C, delay=DELAY)
+    QTest.keyClick(cnapp.window, Qt.Key.Key_H, delay=DELAY)
+    QTest.keyClick(cnapp.window, Qt.Key.Key_C, delay=DELAY)
     cnapp.processEvents()
 
     cmd_count = 1  # already added the part
@@ -42,7 +42,7 @@ def testCreateVirtualHelixGui(cnapp):
             # print(row, col)
             x, y = HoneycombDnaPart.latticeCoordToModelXY(RADIUS, row, col)
             pt = QPointF(x, y)
-            cnapp.graphicsItemClick(slice_part_item, Qt.LeftButton, pos=pt, delay=DELAY)
+            cnapp.graphicsItemClick(slice_part_item, Qt.MouseButton.LeftButton, pos=pt, delay=DELAY)
             cmd_count += 1
     cnapp.processEvents()
 

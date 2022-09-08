@@ -169,7 +169,7 @@ class PathRootItem(QGraphicsRectItem):
 
     ### PUBLIC METHODS ###
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_F:
+        if event.key() == Qt.Key.Key_F:
             self.scene().views()[0].zoomToFit()
     # end def
 

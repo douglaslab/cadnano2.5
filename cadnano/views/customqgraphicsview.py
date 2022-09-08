@@ -14,7 +14,7 @@ Synopsis:
 
 from PyQt6.QtCore import Qt, QTimer, pyqtSignal, qWarning
 from PyQt6.QtGui import QPaintEngine
-from PyQt6.QtWidgets import QGraphicsView, qApp
+from PyQt6.QtWidgets import QGraphicsView
 
 from cadnano import app, util
 from cadnano.views.pathview import pathstyles as styles
@@ -58,10 +58,10 @@ class CustomQGraphicsView(QGraphicsView):
         enable manipulation of the view.
         """
         QGraphicsView.__init__(self, parent)
-        self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
-        self.setRubberBandSelectionMode(Qt.IntersectsItemShape)
-        self._no_drag = QGraphicsView.RubberBandDrag
-        self._yes_drag = QGraphicsView.ScrollHandDrag
+        self.setTransformationAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
+        self.setRubberBandSelectionMode(Qt.ItemSelectionMode.IntersectsItemShape)
+        self._no_drag = QGraphicsView.DragMode.RubberBandDrag
+        self._yes_drag = QGraphicsView.DragMode.ScrollHandDrag
 
         # reset things that are state dependent
         self.clearGraphicsView()
@@ -81,15 +81,15 @@ class CustomQGraphicsView(QGraphicsView):
         self._key_pan_delta_x = styles.PATH_BASE_WIDTH * 21
         self._key_pan_delta_y = styles.PATH_HELIX_HEIGHT + styles.PATH_HELIX_PADDING/2
         # Modifier keys and buttons
-        self._key_mod = Qt.Key_Control
-        self._button_pan = Qt.LeftButton
-        self._button_pan_alt = Qt.MidButton
-        self._button_zoom = Qt.RightButton
+        self._key_mod = Qt.Key.Key_Control
+        self._button_pan = Qt.MouseButton.LeftButton
+        self._button_pan_alt = Qt.MouseButton.MiddleButton
+        self._button_zoom = Qt.MouseButton.RightButton
 
         self.toolbar = None  # custom hack for the paint tool palette
         self._name = None
 
-        self.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
 
         if GL:
             self.is_GL = True
@@ -102,7 +102,7 @@ class CustomQGraphicsView(QGraphicsView):
             # self.resetGL()
         else:
             self.is_GL = False
-            self.setViewportUpdateMode(QGraphicsView.MinimalViewportUpdate)
+            self.setViewportUpdateMode(QGraphicsView.ViewportUpdateMode.MinimalViewportUpdate)
             # self.setViewportUpdateMode(QGraphicsView.SmartViewportUpdate)
         # self.setFocusPolicy(Qt.ClickFocus)
     # end def
@@ -120,9 +120,9 @@ class CustomQGraphicsView(QGraphicsView):
 
     def setViewportUpdateOn(self, is_enabled):
         if is_enabled:
-            self.setViewportUpdateMode(QGraphicsView.MinimalViewportUpdate)
+            self.setViewportUpdateMode(QGraphicsView.ViewportUpdateMode.MinimalViewportUpdate)
         else:
-            self.setViewportUpdateMode(QGraphicsView.NoViewportUpdate)
+            self.setViewportUpdateMode(QGraphicsView.ViewportUpdateMode.NoViewportUpdate)
     # end def
 
     def activateSelection(self, is_active):
@@ -130,9 +130,9 @@ class CustomQGraphicsView(QGraphicsView):
             self._selection_lock.clearSelection(False)
         self.clearSelectionLockAndCallbacks()
         if is_active:
-            self._no_drag = QGraphicsView.RubberBandDrag
+            self._no_drag = QGraphicsView.DragMode.RubberBandDrag
         else:
-            self._no_drag = QGraphicsView.NoDrag
+            self._no_drag = QGraphicsView.DragMode.NoDrag
         if self.dragMode() != self._yes_drag:
             self.setDragMode(self._no_drag)
     # end def
@@ -164,7 +164,7 @@ class CustomQGraphicsView(QGraphicsView):
             self.is_GL = False
             # scene.drawBackground = self.drawBackgroundNonGL
             # self.setViewport(QWidget())
-            # self.setViewportUpdateMode(QGraphicsView.MinimalViewportUpdate)
+            # self.setViewportUpdateMode(QGraphicsView.ViewportUpdateMode.MinimalViewportUpdate)
     # end def
 
     def setupGL(self):
@@ -312,41 +312,41 @@ class CustomQGraphicsView(QGraphicsView):
         if event.key() == self._key_mod:
             self._transform_enable = True
             QGraphicsView.keyPressEvent(self, event)
-        elif event.key() == Qt.Key_Left:
+        elif event.key() == Qt.Key.Key_Left:
             transform = self.scene_root_item.transform()
             transform.translate(self.keyPanDeltaX(), 0)
             self.scene_root_item.setTransform(transform)
-        elif event.key() == Qt.Key_Up:
+        elif event.key() == Qt.Key.Key_Up:
             transform = self.scene_root_item.transform()
             transform.translate(0, self.keyPanDeltaY())
             self.scene_root_item.setTransform(transform)
-        elif event.key() == Qt.Key_Right:
+        elif event.key() == Qt.Key.Key_Right:
             transform = self.scene_root_item.transform()
             transform.translate(-self.keyPanDeltaX(), 0)
             self.scene_root_item.setTransform(transform)
-        elif event.key() == Qt.Key_Down:
+        elif event.key() == Qt.Key.Key_Down:
             transform = self.scene_root_item.transform()
             transform.translate(0, -self.keyPanDeltaY())
             self.scene_root_item.setTransform(transform)
-        elif event.key() == Qt.Key_Plus:
+        elif event.key() == Qt.Key.Key_Plus:
             self.zoomIn(0.3)
-        elif event.key() == Qt.Key_Minus:
+        elif event.key() == Qt.Key.Key_Minus:
             self.zoomIn(0.03)
-        elif event.key() == Qt.Key_Escape:
+        elif event.key() == Qt.Key.Key_Escape:
             QGraphicsView.keyPressEvent(self, event)
-        elif event.key() in [Qt.Key_0,  # Insertions
-                             Qt.Key_1,
-                             Qt.Key_2,
-                             Qt.Key_3,
-                             Qt.Key_4,
-                             Qt.Key_5,
-                             Qt.Key_6,
-                             Qt.Key_7,
-                             Qt.Key_8,
-                             Qt.Key_9,
-                             Qt.Key_Backspace,
-                             Qt.Key_Enter,
-                             Qt.Key_Return]:
+        elif event.key() in [Qt.Key.Key_0,  # Insertions
+                             Qt.Key.Key_1,
+                             Qt.Key.Key_2,
+                             Qt.Key.Key_3,
+                             Qt.Key.Key_4,
+                             Qt.Key.Key_5,
+                             Qt.Key.Key_6,
+                             Qt.Key.Key_7,
+                             Qt.Key.Key_8,
+                             Qt.Key.Key_9,
+                             Qt.Key.Key_Backspace,
+                             Qt.Key.Key_Enter,
+                             Qt.Key.Key_Return]:
             QGraphicsView.keyPressEvent(self, event)
         else:
             if hasattr(self.scene_root_item, KEY_PRESS_EVENT):

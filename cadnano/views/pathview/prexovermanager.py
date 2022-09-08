@@ -24,7 +24,7 @@ class PreXoverManager(QGraphicsRectItem):
         virtual_helix_item (VirtualHelixItem): Description
     """
     HUE_FACTOR = 1.6
-    KEYMAP = {i: getattr(Qt, 'Key_%d' % i) for i in range(10)}
+    KEYMAP = {i: getattr(Qt.Key, 'Key_%d' % i) for i in range(10)}
 
     def __init__(self, part_item):
         """Summary

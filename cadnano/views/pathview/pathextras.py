@@ -45,7 +45,7 @@ FWDPHOS_PP, REVPHOS_PP = QPainterPath(), QPainterPath()
 FWDPHOS_PP.addPolygon(TRIANGLE)
 REVPHOS_PP.addPolygon(T180.map(TRIANGLE))
 
-KEYINPUT_ACTIVE_FLAG = QGraphicsItem.ItemIsFocusable
+KEYINPUT_ACTIVE_FLAG = QGraphicsItem.GraphicsItemFlag.ItemIsFocusable
 
 PROX_ALPHA = 64
 
@@ -488,7 +488,7 @@ class PreXoverItem(QGraphicsRectItem):
                 return False
             self._tick_marks.setPen(getPenObj(  self.color,
                                                 styles.PREXOVER_STROKE_WIDTH,
-                                                capstyle=Qt.FlatCap,
+                                                capstyle=Qt.PenCapStyle.FlatCap,
                                                 joinstyle=Qt.RoundJoin))
             self._tick_marks.setPath(path)
             self._tick_marks.show()
@@ -916,7 +916,7 @@ class PathWorkplaneItem(QGraphicsRectItem):
 
     ### EVENT HANDLERS ###
     def hoverEnterEvent(self, event):
-        if event.modifiers() & Qt.ShiftModifier:
+        if event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
             self.setCursor(Qt.OpenHandCursor)
         else:
             self.setCursor(Qt.ArrowCursor)
@@ -925,7 +925,7 @@ class PathWorkplaneItem(QGraphicsRectItem):
     # end def
 
     def hoverMoveEvent(self, event):
-        if event.modifiers() & Qt.ShiftModifier:
+        if event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
             self.setCursor(Qt.OpenHandCursor)
         else:
             self.setCursor(Qt.ArrowCursor)
@@ -944,7 +944,7 @@ class PathWorkplaneItem(QGraphicsRectItem):
         future comparison.
         """
         self._high_drag_bound = self._model_part.getProperty('max_vhelix_length') - self.width()
-        if event.modifiers() & Qt.ShiftModifier or self._moving_via_handle:
+        if event.modifiers() & Qt.KeyboardModifier.ShiftModifier or self._moving_via_handle:
             self.setCursor(Qt.ClosedHandCursor)
             self._start_idx_low = self._idx_low
             self._start_idx_high = self._idx_high

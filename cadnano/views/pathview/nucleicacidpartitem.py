@@ -89,7 +89,7 @@ class PathNucleicAcidPartItem(QAbstractPartItem):
         self._virtual_helix_item_list = []
         self._initModifierRect()
         self._proxy_parent = ProxyParentItem(self)
-        self._proxy_parent.setFlag(QGraphicsItem.ItemHasNoContents)
+        self._proxy_parent.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
         self._scale_2_model = m_p.baseWidth()/_BASE_WIDTH
         self._scale_2_Qt = _BASE_WIDTH / m_p.baseWidth()
 

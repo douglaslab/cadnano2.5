@@ -208,7 +208,7 @@ class SliceVirtualHelixItem(AbstractVirtualHelixItem, QGraphicsEllipseItem):
         if self.FILTER_NAME not in self._part_item.getFilterSet():
             self._doc_controller.showFilterHints(True, filter_name=self.FILTER_NAME)
             return
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             return
         part_item = self._part_item
         tool = part_item._getActiveTool()
@@ -223,7 +223,7 @@ class SliceVirtualHelixItem(AbstractVirtualHelixItem, QGraphicsEllipseItem):
         self._doc_controller.showFilterHints(False)
 
     def createToolMousePress(self, tool, part_item, event):
-        shift = event.modifiers() & Qt.ShiftModifier
+        shift = event.modifiers() & Qt.KeyboardModifier.ShiftModifier
         idx_low, idx_high = self._model_part.getProperty('workplane_idxs')
         idx_low = int(idx_low)
         idx_high = int(idx_high-1)

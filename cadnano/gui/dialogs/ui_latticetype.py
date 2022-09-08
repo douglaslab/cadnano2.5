@@ -7,14 +7,14 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class Ui_LatticeType(object):
     def setupUi(self, LatticeType):
         LatticeType.setObjectName("LatticeType")
         LatticeType.resize(215, 80)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(LatticeType.sizePolicy().hasHeightForWidth())
@@ -26,7 +26,7 @@ class Ui_LatticeType(object):
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
         self.buttonBox = QtWidgets.QDialogButtonBox(LatticeType)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+        self.buttonBox.setOrientation(QtCore.Qt.Orientation.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.No | QtWidgets.QDialogButtonBox.Yes)
         self.buttonBox.setCenterButtons(True)
         self.buttonBox.setObjectName("buttonBox")

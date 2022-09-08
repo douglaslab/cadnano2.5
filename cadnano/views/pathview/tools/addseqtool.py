@@ -59,7 +59,7 @@ class DNAHighlighter(QSyntaxHighlighter):
 
 
 _BW = styles.PATH_BASE_WIDTH
-_PEN = getPenObj(styles.BLUE_STROKE, 1, capstyle=Qt.FlatCap)
+_PEN = getPenObj(styles.BLUE_STROKE, 1, capstyle=Qt.PenCapStyle.FlatCap)
 
 _RECT = QRectF(0, 0, _BW, _BW)
 _PATH_ARROW_LEFT = QPainterPath()

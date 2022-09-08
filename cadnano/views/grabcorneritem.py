@@ -2,7 +2,6 @@
 from PyQt6.QtCore import QPointF, QRectF, Qt
 from cadnano.gui.palette import getBrushObj, getPenObj
 from PyQt6.QtWidgets import QGraphicsItem, QGraphicsRectItem
-from PyQt6.QtWidgets import qApp
 
 TOP_LEFT = 0
 BOTTOM_LEFT = 1
@@ -33,11 +32,11 @@ class GrabCornerItem(QGraphicsRectItem):
     # end def
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             return
         parent = self.parentItem()
 
-        if self.is_resizable and event.modifiers() & Qt.ShiftModifier:
+        if self.is_resizable and event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
             self.model_bounds = parent.getModelMinBounds()
             self.event_start_position = event.scenePos()
             self.item_start = self.pos()

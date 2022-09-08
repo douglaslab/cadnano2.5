@@ -6,13 +6,13 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_About(object):
     def setupUi(self, About):
         About.setObjectName("About")
         About.resize(474, 304)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(About.sizePolicy().hasHeightForWidth())
@@ -21,14 +21,14 @@ class Ui_About(object):
         self.gridLayout = QtWidgets.QGridLayout(About)
         self.gridLayout.setObjectName("gridLayout")
         self.frame = QtWidgets.QFrame(About)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy)
         self.frame.setMinimumSize(QtCore.QSize(440, 270))
-        self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
         self.frame.setObjectName("frame")
         self.appname = QtWidgets.QLabel(self.frame)
         self.appname.setGeometry(QtCore.QRect(0, 10, 191, 31))

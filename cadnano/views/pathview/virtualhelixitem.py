@@ -385,7 +385,7 @@ class PathVirtualHelixItem(AbstractVirtualHelixItem, QGraphicsPathItem):
             event (TYPE): Description
         """
         # 1. Check if we are doing a Z translation
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             viewroot = self._viewroot
             current_filter_set = viewroot.selectionFilterSet()
             if self.FILTER_NAME in current_filter_set and self.part().isZEditable():
@@ -452,7 +452,7 @@ class PathVirtualHelixItem(AbstractVirtualHelixItem, QGraphicsPathItem):
         Args:
             event (TYPE): Description
         """
-        if self._right_mouse_move and event.button() == Qt.RightButton:
+        if self._right_mouse_move and event.button() == Qt.MouseButton.RightButton:
             MOVE_THRESHOLD = 0.01   # ignore small moves
             self._right_mouse_move = False
             delta = self.pos() - self.handle_start
@@ -555,7 +555,7 @@ class PathVirtualHelixItem(AbstractVirtualHelixItem, QGraphicsPathItem):
             idx (int): the base index within the virtual helix
         """
         # print("%s: %s[%s]" % (util.methodName(), strand_set, idx))
-        if modifiers & Qt.ShiftModifier:
+        if modifiers & Qt.KeyboardModifier.ShiftModifier:
             bounds = strand_set.getBoundsOfEmptyRegionContaining(idx)
             ret = strand_set.createStrand(*bounds)
             print("creating strand {} was successful: {}".format(bounds, ret))

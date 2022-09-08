@@ -11,8 +11,8 @@ from PyQt6.QtCore import QDataStream
 from PyQt6.QtCore import Qt, QRect, QVariant
 from PyQt6.QtCore import QItemSelectionModel, QItemSelection
 from PyQt6.QtCore import QPersistentModelIndex
-from PyQt6.QtGui import QColor, QFont, QPalette, QPixmap
-from PyQt6.QtWidgets import QAbstractItemView, QAction
+from PyQt6.QtGui import QAction, QColor, QFont, QPalette, QPixmap
+from PyQt6.QtWidgets import QAbstractItemView
 from PyQt6.QtWidgets import QColorDialog, QHeaderView
 from PyQt6.QtWidgets import QLineEdit, QMenu
 from PyQt6.QtWidgets import QTreeWidget, QTreeView, QTreeWidgetItemIterator
@@ -76,7 +76,7 @@ class OutlinerTreeWidget(QTreeWidget):
         self.setColumnWidth(2, 18)
         self.setColumnWidth(3, 18)
 
-        self.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.customContextMenuRequested.connect(self.getCustomContextMenu)
 
         # Dragging

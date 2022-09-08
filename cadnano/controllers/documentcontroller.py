@@ -2,9 +2,9 @@
 import os
 
 from PyQt6.QtCore import QDir, QFileInfo, QRect, QSettings, QSize, Qt
-from PyQt6.QtGui import QKeySequence, QPainter
+from PyQt6.QtGui import QKeySequence, QPainter, QActionGroup
 from PyQt6.QtSvg import QSvgGenerator
-from PyQt6.QtWidgets import (QActionGroup, QApplication, QDialog, QFileDialog,
+from PyQt6.QtWidgets import (QApplication, QDialog, QFileDialog,
                              QGraphicsItem, QMessageBox,
                              QStyleOptionGraphicsItem)
 

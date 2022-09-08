@@ -335,7 +335,7 @@ class XoverItem(QGraphicsPathItem):
 
         self._getActiveTool = strand_item._getActiveTool
 
-        # self.setFlag(QGraphicsItem.ItemIsSelectable)
+        # self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
     # end def
 
     ### SLOTS ###
@@ -388,7 +388,7 @@ class XoverItem(QGraphicsPathItem):
         if self._node3:
             self._node3.show()
             self._node5.show()
-        self.setFlag(QGraphicsItem.ItemIsSelectable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
     # end def
 
     def refreshXover(self):
@@ -567,7 +567,7 @@ class XoverItem(QGraphicsPathItem):
         else:
             pen_width = styles.PATH_STRAND_STROKE_WIDTH
             alpha = 255
-        pen = getPenObj(color, pen_width, alpha=alpha, capstyle=Qt.FlatCap)
+        pen = getPenObj(color, pen_width, alpha=alpha, capstyle=Qt.PenCapStyle.FlatCap)
         self.setPen(pen)
     # end def
 

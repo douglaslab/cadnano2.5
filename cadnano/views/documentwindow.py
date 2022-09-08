@@ -1,11 +1,11 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtCore import QSettings
 from PyQt6.QtCore import QPoint, QSize
+from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QGraphicsScene
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtWidgets import QGraphicsItem
-from PyQt6.QtWidgets import QAction, QApplication, QWidget
-
+from PyQt6.QtWidgets import QApplication, QWidget
 
 from cadnano import app
 from cadnano.gui.mainwindow import ui_mainwindow
@@ -166,7 +166,7 @@ class DocumentWindow(QMainWindow, ui_mainwindow.Ui_MainWindow):
                                       parent=None,
                                       window=self,
                                       document=doc)
-        self.grid_root.setFlag(QGraphicsItem.ItemHasNoContents)
+        self.grid_root.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
         self.grid_scene.addItem(self.grid_root)
         self.grid_scene.setItemIndexMethod(QGraphicsScene.NoIndex)
         assert self.grid_root.scene() == self.grid_scene
@@ -190,7 +190,7 @@ class DocumentWindow(QMainWindow, ui_mainwindow.Ui_MainWindow):
                                       parent=None,
                                       window=self,
                                       document=doc)
-        self.path_root.setFlag(QGraphicsItem.ItemHasNoContents)
+        self.path_root.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
         self.path_scene.addItem(self.path_root)
         self.path_scene.setItemIndexMethod(QGraphicsScene.NoIndex)
         assert self.path_root.scene() == self.path_scene
@@ -239,7 +239,7 @@ class DocumentWindow(QMainWindow, ui_mainwindow.Ui_MainWindow):
                                         parent=None,
                                         window=self,
                                         document=doc)
-        self.slice_root.setFlag(QGraphicsItem.ItemHasNoContents)
+        self.slice_root.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
         self.slice_scene.addItem(self.slice_root)
         self.slice_scene.setItemIndexMethod(QGraphicsScene.NoIndex)
         assert self.slice_root.scene() == self.slice_scene

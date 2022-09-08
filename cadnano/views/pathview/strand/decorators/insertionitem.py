@@ -14,7 +14,7 @@ _HALF_BASE_WIDTH = _HBW = _BASE_WIDTH / 2
 _OFFSET1 = _BASE_WIDTH / 4
 _DEFAULT_RECT = QRectF(0, 0, _BW, _BW)
 _B_PEN = getPenObj(styles.BLUE_STROKE, styles.INSERTWIDTH)
-_R_PEN = getPenObj(styles.RED_STROKE, styles.SKIPWIDTH, capstyle=Qt.RoundCap)
+_R_PEN = getPenObj(styles.RED_STROKE, styles.SKIPWIDTH, capstyle=Qt.PenCapStyle.RoundCap)
 _NO_PEN = getNoPen()
 
 
@@ -200,7 +200,7 @@ class InsertionItem(QGraphicsPathItem):
         is_on_top = self._is_on_top
         if self._insertion.length() > 0:
             self.setPen(QPen(QColor(strand.oligo().getColor()), styles.INSERTWIDTH))
-            self.setBrush(QBrush(Qt.NoBrush))
+            self.setBrush(QBrush(Qt.BrushStyle.NoBrush))
             self.setPath(_insert_path.getInsert(is_on_top))
         else:  # insertion_size < 0 (a skip)
             self.setPen(_skip_path.getPen())
@@ -237,7 +237,7 @@ class InsertionItem(QGraphicsPathItem):
                 base_text = base_text[:17] + '...'
                 len_BT = len(base_text)
             fraction_arc_len_per_char = (1.0 - 2.0*_FRACTION_INSERT_TO_PAD) / (len_BT + 1)
-            seq_item.setPen(QPen(Qt.NoPen))
+            seq_item.setPen(QPen(Qt.PenStyle.NoPen))
             seq_item.setBrush(QBrush(Qt.black))
 
             seq_path = QPainterPath()
@@ -328,13 +328,13 @@ class InsertionLabel(QGraphicsTextItem):
         """
         a = event.key()
         text = event.text()
-        if a in [Qt.Key_Space, Qt.Key_Tab]:
+        if a in [Qt.Key.Key_Space, Qt.Key.Key_Tab]:
             return
-        elif a in [Qt.Key_Escape]:
+        elif a in [Qt.Key.Key_Escape]:
             self.updateLabel()
             self.focusOut()
             return
-        elif a in [Qt.Key_Return, Qt.Key_Enter]:
+        elif a in [Qt.Key.Key_Return, Qt.Key.Key_Enter]:
             self.inputMethodEvent(event)
             return
         elif text.isalpha():
@@ -353,7 +353,7 @@ class InsertionLabel(QGraphicsTextItem):
     # end class
 
     def event(self, event):
-        if event.type() == QEvent.KeyPress and event.key() == Qt.Key_Tab:
+        if event.type() == QEvent.KeyPress and event.key() == Qt.Key.Key_Tab:
             # print("tab pressed")
             return True
         return QGraphicsTextItem.event(self, event)

@@ -55,8 +55,8 @@ class VirtualHelixHandleItem(QGraphicsEllipseItem):
         # handle the label specific stuff
         self._label = self.createLabel()
         self.setNumber()
-        self.setFlag(QGraphicsItem.ItemIsSelectable)
-        self.setFlag(QGraphicsItem.ItemSendsScenePositionChanges)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemSendsScenePositionChanges)
         self.setSelectedColor(False)
         self.setZValue(styles.ZPATHHELIX)
         self.setRect(_RECT)
@@ -295,7 +295,7 @@ class VirtualHelixHandleItem(QGraphicsEllipseItem):
         selection_group = self.group()
         if selection_group is not None:
             selection_group.mousePressEvent(event)
-        elif event.button() == Qt.RightButton:
+        elif event.button() == Qt.MouseButton.RightButton:
             current_filter_set = self._viewroot.selectionFilterSet()
             if self.FILTER_NAME in current_filter_set and self.part().isZEditable():
                 self._right_mouse_move = True
@@ -344,7 +344,7 @@ class VirtualHelixHandleItem(QGraphicsEllipseItem):
             TYPE: Description
         """
         MOVE_THRESHOLD = 0.01   # ignore small moves
-        if self._right_mouse_move and event.button() == Qt.RightButton:
+        if self._right_mouse_move and event.button() == Qt.MouseButton.RightButton:
             self._right_mouse_move = False
             delta = self.pos() - self.handle_start
             dz = delta.x()

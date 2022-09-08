@@ -198,7 +198,7 @@ class GridVirtualHelixItem(AbstractVirtualHelixItem, QGraphicsEllipseItem):
         """
         if self.FILTER_NAME not in self._part_item.getFilterSet():
             return
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             return
         part_item = self._part_item
         tool = part_item._getActiveTool()

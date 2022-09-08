@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from PyQt6.QtCore import QObject, QPointF, QRectF, Qt
 from PyQt6.QtGui import QFontMetrics
-from PyQt6.QtWidgets import QGraphicsItem, QGraphicsRectItem, qApp
+from PyQt6.QtWidgets import QGraphicsItem, QGraphicsRectItem
 from PyQt6.QtWidgets import QGraphicsTextItem
 from cadnano.gui.palette import getBrushObj, getPenObj
 from cadnano.proxies.cnenum import Axis, HandleType
@@ -262,11 +262,11 @@ class HandleItem(QGraphicsRectItem):
     # end def
 
     def mousePressEvent(self, event):
-        if event.button() == Qt.RightButton:
+        if event.button() == Qt.MouseButton.RightButton:
             return
 
         parent = self.parentItem()
-        if self._group.is_resizable and event.modifiers() & Qt.ShiftModifier:
+        if self._group.is_resizable and event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
             self.setCursor(self._resize_cursor)
             self.model_bounds = parent.getModelMinBounds(handle_type=self._handle_type)
             self.event_start_position = event.scenePos()

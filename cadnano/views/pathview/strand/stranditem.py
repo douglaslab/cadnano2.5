@@ -83,7 +83,7 @@ class StrandItem(QGraphicsLineItem):
             self._updateAppearance(model_strand)
 
         self.setZValue(styles.ZSTRANDITEM)
-        self.setFlag(QGraphicsItem.ItemIsSelectable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsSelectable)
     # end def
 
     ### SIGNALS ###
@@ -510,7 +510,7 @@ class StrandItem(QGraphicsLineItem):
             pen_width = styles.PATH_STRAND_STROKE_WIDTH
             alpha = None
         self.xover_3p_end._updateColor(strand)
-        pen = getPenObj(color, pen_width, alpha=alpha, capstyle=Qt.FlatCap)
+        pen = getPenObj(color, pen_width, alpha=alpha, capstyle=Qt.PenCapStyle.FlatCap)
         brush = getBrushObj(color, alpha=alpha)
         self.setPen(pen)
         self._low_cap.updateHighlight(brush)
@@ -551,7 +551,7 @@ class StrandItem(QGraphicsLineItem):
 
         seq_txt = ''.join(seq_list)
 
-        # seq_lbl.setPen(QPen( Qt.NoPen))    # leave the Pen as None for unless required
+        # seq_lbl.setPen(QPen( Qt.PenStyle.NoPen))    # leave the Pen as None for unless required
         seq_lbl.setBrush(getBrushObj(styles.SEQUENCEFONTCOLOR))
         seq_lbl.setFont(styles.SEQUENCEFONT)
 
@@ -769,7 +769,7 @@ class StrandItem(QGraphicsLineItem):
         m_strand = self._model_strand
         if event is None:
             color = m_strand.oligo().getColor()
-        elif event.modifiers() & Qt.ShiftModifier:
+        elif event.modifiers() & Qt.KeyboardModifier.ShiftModifier:
             color = self.window().path_color_panel.shiftColorName()
         else:
             color = self.window().path_color_panel.colorName()

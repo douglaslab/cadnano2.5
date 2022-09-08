@@ -191,7 +191,7 @@ class SliceRootItem(QGraphicsRectItem):
     # end def
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_F:
+        if event.key() == Qt.Key.Key_F:
             self.scene().views()[0].zoomToFit()
 
         for na_part_item in self.instance_items:

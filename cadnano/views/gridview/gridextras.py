@@ -239,12 +239,12 @@ class PhosBond(QGraphicsLineItem):
         self.adapter = PropertyWrapperObject(self)
         color = parent.color
         if is_fwd:  # lighter solid
-            self.setPen(getPenObj(color, 0.25, alpha=42, capstyle=Qt.RoundCap))
+            self.setPen(getPenObj(color, 0.25, alpha=42, capstyle=Qt.PenCapStyle.RoundCap))
         else:  # darker, dotted
             self.setPen(getPenObj(color, 0.25,
                                   alpha=64,
                                   penstyle=Qt.DotLine,
-                                  capstyle=Qt.RoundCap))
+                                  capstyle=Qt.PenCapStyle.RoundCap))
     # end def
 # end class
 
@@ -297,7 +297,7 @@ class PreXoverItem(QGraphicsRectItem):
         self.setFiltersChildEvents(True)
         self.setRect(self.phos_item.boundingRect())
         self.setPen(getNoPen())
-        # self.setPen(getPenObj('#cccccc', 0.1, alpha=128, capstyle=Qt.RoundCap))
+        # self.setPen(getPenObj('#cccccc', 0.1, alpha=128, capstyle=Qt.PenCapStyle.RoundCap))
     # end def
 
     ### ACCESSORS ###
@@ -575,7 +575,7 @@ class PreXoverItemGroup(QGraphicsEllipseItem):
         self.fwd_pos_array = np.asarray(fwd_pos)
         self.rev_pos_array = np.asarray(rev_pos)
         self.baseNearLine = QGraphicsLineItem(self)
-        self.baseNearLine.setPen(getPenObj("#000000", 0.25, capstyle=Qt.RoundCap))
+        self.baseNearLine.setPen(getPenObj("#000000", 0.25, capstyle=Qt.PenCapStyle.RoundCap))
     # end def
 
     def mousePressEvent(self, event):
@@ -831,7 +831,7 @@ class WedgeGizmo(QGraphicsPathItem):
         path = QPainterPath()
 
         if outline_only:
-            self.setPen(getPenObj(color, 0.5, alpha=128, capstyle=Qt.RoundCap))
+            self.setPen(getPenObj(color, 0.5, alpha=128, capstyle=Qt.PenCapStyle.RoundCap))
             path.moveTo(line1.p2())
             path.quadTo(line0.p2(), line2.p2())
         else:

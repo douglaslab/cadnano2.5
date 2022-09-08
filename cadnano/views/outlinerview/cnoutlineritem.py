@@ -9,12 +9,12 @@ VISIBLE_COL = 2
 COLOR_COL = 3
 
 
-LEAF_FLAGS = (Qt.ItemIsSelectable | Qt.ItemIsEditable |
-              Qt.ItemIsDragEnabled |
-              Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)        # 55 + 8 = 63
-DISABLE_FLAGS = Qt.NoItemFlags                                  # 0
-ROOT_FLAGS =  ( Qt.ItemIsDragEnabled | Qt.ItemIsDropEnabled |
-                Qt.ItemIsUserCheckable | Qt.ItemIsEnabled )     # 60
+LEAF_FLAGS = (Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsEditable |
+              Qt.ItemFlag.ItemIsDragEnabled |
+              Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled)        # 55 + 8 = 63
+DISABLE_FLAGS = Qt.ItemFlag.NoItemFlags                                  # 0
+ROOT_FLAGS =  ( Qt.ItemFlag.ItemIsDragEnabled | Qt.ItemFlag.ItemIsDropEnabled |
+                Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled )     # 60
 
 
 class CNOutlinerItem(QTreeWidgetItem):
@@ -122,7 +122,7 @@ class RootPartItem(QTreeWidgetItem):
         self.setData(LOCKED_COL, Qt.EditRole, False)  # is_locked
         self.setData(VISIBLE_COL, Qt.EditRole, True)  # is_visible
         self.setData(COLOR_COL, Qt.EditRole, "#ffffff")  # color
-        # self.setFlags(self.flags() & ~Qt.ItemIsSelectable)
+        # self.setFlags(self.flags() & ~Qt.ItemFlag.ItemIsSelectable)
         self.setFlags(ROOT_FLAGS)
         self.setExpanded(True)
     # end def
