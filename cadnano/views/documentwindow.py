@@ -64,9 +64,9 @@ class DocumentWindow(QMainWindow, ui_mainwindow.Ui_MainWindow):
 
         self.setCentralWidget(None)
         if app().prefs.orthoview_style == OrthoViewType.SLICE:
-            self.splitDockWidget(self.slice_dock_widget, self.path_dock_widget, Qt.Horizontal)
+            self.splitDockWidget(self.slice_dock_widget, self.path_dock_widget, Qt.Orientation.Horizontal)
         elif app().prefs.orthoview_style == OrthoViewType.GRID:
-            self.splitDockWidget(self.grid_dock_widget, self.path_dock_widget, Qt.Horizontal)
+            self.splitDockWidget(self.grid_dock_widget, self.path_dock_widget, Qt.Orientation.Horizontal)
         self._restoreGeometryandState()
         self._finishInit()
 
@@ -168,7 +168,7 @@ class DocumentWindow(QMainWindow, ui_mainwindow.Ui_MainWindow):
                                       document=doc)
         self.grid_root.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
         self.grid_scene.addItem(self.grid_root)
-        self.grid_scene.setItemIndexMethod(QGraphicsScene.NoIndex)
+        self.grid_scene.setItemIndexMethod(QGraphicsScene.ItemIndexMethod.NoIndex)
         assert self.grid_root.scene() == self.grid_scene
         self.grid_graphics_view.setScene(self.grid_scene)
         self.grid_graphics_view.scene_root_item = self.grid_root
@@ -192,7 +192,7 @@ class DocumentWindow(QMainWindow, ui_mainwindow.Ui_MainWindow):
                                       document=doc)
         self.path_root.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
         self.path_scene.addItem(self.path_root)
-        self.path_scene.setItemIndexMethod(QGraphicsScene.NoIndex)
+        self.path_scene.setItemIndexMethod(QGraphicsScene.ItemIndexMethod.NoIndex)
         assert self.path_root.scene() == self.path_scene
         self.path_graphics_view.setScene(self.path_scene)
         self.path_graphics_view.scene_root_item = self.path_root
@@ -241,7 +241,7 @@ class DocumentWindow(QMainWindow, ui_mainwindow.Ui_MainWindow):
                                         document=doc)
         self.slice_root.setFlag(QGraphicsItem.GraphicsItemFlag.ItemHasNoContents)
         self.slice_scene.addItem(self.slice_root)
-        self.slice_scene.setItemIndexMethod(QGraphicsScene.NoIndex)
+        self.slice_scene.setItemIndexMethod(QGraphicsScene.ItemIndexMethod.NoIndex)
         assert self.slice_root.scene() == self.slice_scene
         self.slice_graphics_view.setScene(self.slice_scene)
         self.slice_graphics_view.scene_root_item = self.slice_root

@@ -41,7 +41,7 @@ class PropertyEditorWidget(QTreeWidget):
         super(PropertyEditorWidget, self).__init__(parent)
         self._cn_model_set = set()
         self._cn_model_list = []
-        self.setAttribute(Qt.WA_MacShowFocusRect, 0)  # no mac focus halo
+        self.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, 0)  # no mac focus halo
     # end def
 
     def undoStack(self):
@@ -73,7 +73,7 @@ class PropertyEditorWidget(QTreeWidget):
         h = self.header()
         h.resizeSection(0, 200)
         h.resizeSection(1, 100)
-        h.setSectionResizeMode(QHeaderView.Interactive)
+        h.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
         # h.setStretchLastSection(False)
 
         custom_delegate = CustomStyleItemDelegate(self)

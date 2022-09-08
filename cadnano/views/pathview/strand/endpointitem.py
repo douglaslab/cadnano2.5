@@ -463,9 +463,9 @@ class EndpointItem(QGraphicsPathItem):
     # end def
 
     def itemChange(self, change, value):
-        # for selection changes test against QGraphicsItem.ItemSelectedChange
+        # for selection changes test against QGraphicsItem.GraphicsItemChange.ItemSelectedChange
         # intercept the change instead of the has changed to enable features.
-        if change == QGraphicsItem.ItemSelectedChange and self.scene():
+        if change == QGraphicsItem.GraphicsItemChange.ItemSelectedChange and self.scene():
             active_tool = self._getActiveTool()
             if str(active_tool) == "select_tool":
                 s_i = self._strand_item

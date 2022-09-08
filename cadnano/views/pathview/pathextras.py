@@ -835,7 +835,7 @@ class PathWorkplaneItem(QGraphicsRectItem):
             is_movable (bool): is this movable?
         """
         self._moving_via_handle = is_movable
-        # self.setFlag(QGraphicsItem.ItemIsMovable, is_movable)
+        # self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, is_movable)
     # end def
 
     def finishDrag(self):

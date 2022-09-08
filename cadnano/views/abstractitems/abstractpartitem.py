@@ -41,11 +41,11 @@ class QAbstractPartItem(QGraphicsRectItem):
 
     def setMovable(self, is_movable):
         self._viewroot.manager.select_tool.resetSelections()
-        self.setFlag(QGraphicsItem.ItemIsMovable, is_movable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, is_movable)
     # end def
 
     def isMovable(self):
-        return self.flags() & QGraphicsItem.ItemIsMovable
+        return self.flags() & QGraphicsItem.GraphicsItemFlag.ItemIsMovable
     # end def
 
     def finishDrag(self):
@@ -169,7 +169,7 @@ class AbstractPartItem(object):
     # end def
 
     def setMovable(self, is_movable):
-        self.setFlag(QGraphicsItem.ItemIsMovable, is_movable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, is_movable)
     # end def
 
     def document(self):

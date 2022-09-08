@@ -71,11 +71,11 @@ class ModsTool(AbstractPathTool):
         uiDlg.dialogGridLayout.addWidget(uiDlg.createButtonBox, 2, 0, 1, 1)
 
         saveButton = QPushButton("Save", uiDlg.createButtonBox)
-        uiDlg.createButtonBox.addButton(saveButton, QDialogButtonBox.ActionRole)
+        uiDlg.createButtonBox.addButton(saveButton, QDialogButtonBox.ButtonRole.ActionRole)
         saveButton.released.connect(self.saveModChecker)
 
         deleteButton = QPushButton("Delete", uiDlg.createButtonBox)
-        uiDlg.createButtonBox.addButton(deleteButton, QDialogButtonBox.ActionRole)
+        uiDlg.createButtonBox.addButton(deleteButton, QDialogButtonBox.ButtonRole.ActionRole)
         deleteButton.released.connect(self.deleteModChecker)
 
         uiDlg.instanceButtonBox = QDialogButtonBox(self.dialog)
@@ -84,7 +84,7 @@ class ModsTool(AbstractPathTool):
         uiDlg.dialogGridLayout.addWidget(uiDlg.instanceButtonBox, 3, 0, 1, 1)
 
         deleteInstButton = QPushButton("Delete Instance", uiDlg.instanceButtonBox)
-        uiDlg.instanceButtonBox.addButton(deleteInstButton, QDialogButtonBox.ActionRole)
+        uiDlg.instanceButtonBox.addButton(deleteInstButton, QDialogButtonBox.ButtonRole.ActionRole)
         deleteInstButton.released.connect(self.deleteInstModChecker)
 
         combobox = uiDlg.nameComboBox

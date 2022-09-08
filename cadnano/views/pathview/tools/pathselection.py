@@ -337,14 +337,14 @@ class SelectionItemGroup(QGraphicsItemGroup):
             value (QVariant): resolves in Python as an integer
         """
         # logger.debug("ps itemChange")
-        if change == QGraphicsItem.ItemSelectedChange:
+        if change == QGraphicsItem.GraphicsItemChange.ItemSelectedChange:
             # logger.debug("isc", value)
             if value == False:  # noqa
                 self.clearSelection(False)
                 return False
             else:
                 return True
-        elif change == QGraphicsItem.ItemChildAddedChange:
+        elif change == QGraphicsItem.GraphicsItemChange.ItemChildAddedChange:
             # logger.debug("icac")
             if self._added_to_press_list is False:
                 # logger.debug("kid added")

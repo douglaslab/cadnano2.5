@@ -36,7 +36,7 @@ class DNAHighlighter(QSyntaxHighlighter):
         QSyntaxHighlighter.__init__(self, parent)
         self.parent = parent
         self.format = QTextCharFormat()
-        self.format.setForeground(getBrushObj(Qt.white))
+        self.format.setForeground(getBrushObj(Qt.GlobalColor.white))
         self.format.setBackground(getBrushObj(styles.INVALID_DNA_COLOR))
         if styles.UNDERLINE_INVALID_DNA:
             self.format.setFontUnderline(True)
@@ -205,9 +205,9 @@ class AddSeqTool(AbstractPathTool):
             radio_button.clicked.connect(self.signal_mapper.map)
             if name in sequences:
                 self.sequence_radio_button_id[sequences[name]] = i
-        self.signal_mapper.mapped.connect(self.sequenceOptionChangedSlot)
+        self.signal_mapper.mappedInt.connect(self.sequenceOptionChangedSlot)
         # disable apply until valid option or custom sequence is chosen
-        self.apply_button = ui_dlg.custom_button_box.button(QDialogButtonBox.Apply)
+        self.apply_button = ui_dlg.custom_button_box.button(QDialogButtonBox.StandardButton.Apply)
         self.apply_button.setEnabled(False)
         # watch sequence textedit box to validate custom sequences
         self.seq_box = ui_dlg.seq_text_edit

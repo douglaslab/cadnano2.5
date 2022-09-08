@@ -100,7 +100,7 @@ class PathNucleicAcidPartItem(QAbstractPartItem):
         # self.setRect(self._rect)
 
         self.outline = outline = PathRectItem(self)
-        outline.setFlag(QGraphicsItem.ItemStacksBehindParent)
+        outline.setFlag(QGraphicsItem.GraphicsItemFlag.ItemStacksBehindParent)
         self.setZValue(styles.ZPART)
         self._proxy_parent.setZValue(styles.ZPART)
         outline.setZValue(styles.ZDESELECTOR)

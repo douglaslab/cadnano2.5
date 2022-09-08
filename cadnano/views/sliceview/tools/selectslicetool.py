@@ -507,7 +507,7 @@ class SliceSelectionGroup(QGraphicsItemGroup):
         self.tool = tool
         self.setFiltersChildEvents(True)
         self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsFocusable)  # for keyPressEvents
-        self.setFlag(QGraphicsItem.ItemIsMovable)
+        self.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable)
 
         # self.bounding_rect_item = bri = QGraphicsRectItem(tool)
         self.bounding_rect_item = bri = SliceSelectionBox()
@@ -547,7 +547,7 @@ class SliceSelectionGroup(QGraphicsItemGroup):
         bri.hide()
         self.removeFromGroup(bri)
         bri.setParentItem(self.tool)
-        self.setFocus(False)
+        # self.setFocus(False)
     # end def
 
     def keyPressEvent(self, event):
@@ -577,7 +577,7 @@ class SliceSelectionGroup(QGraphicsItemGroup):
 
     def mouseMoveEvent(self, event):
         """because SliceSelectionGroup has the flag
-        QGraphicsItem.ItemIsMovable
+        QGraphicsItem.GraphicsItemFlag.ItemIsMovable
         we need only get the position of the item to figure
         out what to submit to the model
 
@@ -600,7 +600,7 @@ class SliceSelectionGroup(QGraphicsItemGroup):
 
     def mouseReleaseEvent(self, event):
         """because SliceSelectionGroup has the flag
-        QGraphicsItem.ItemIsMovable
+        QGraphicsItem.GraphicsItemFlag.ItemIsMovable
         we need only get the position of the item to figure
         out what to submit to the model
 

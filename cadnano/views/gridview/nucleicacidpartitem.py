@@ -76,7 +76,7 @@ class GridNucleicAcidPartItem(QAbstractPartItem):
         self.setZValue(styles.ZPARTITEM)
         self.outline = outline = QGraphicsRectItem(self)
         o_rect = self._configureOutline(outline)
-        outline.setFlag(QGraphicsItem.ItemStacksBehindParent)
+        outline.setFlag(QGraphicsItem.GraphicsItemFlag.ItemStacksBehindParent)
         outline.setZValue(styles.ZDESELECTOR)
         model_color = m_p.getColor()
         self.outline.setPen(getPenObj(model_color, _DEFAULT_WIDTH))

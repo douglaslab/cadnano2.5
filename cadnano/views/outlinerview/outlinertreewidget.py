@@ -47,7 +47,7 @@ class OutlinerTreeWidget(QTreeWidget):
 
     def __init__(self, parent=None):
         super(OutlinerTreeWidget, self).__init__(parent)
-        self.setAttribute(Qt.WA_MacShowFocusRect, 0)  # no mac focus halo
+        self.setAttribute(Qt.WidgetAttribute.WA_MacShowFocusRect, 0)  # no mac focus halo
         self.to_be_activated = None
 
     def configure(self, window, document):
@@ -66,10 +66,10 @@ class OutlinerTreeWidget(QTreeWidget):
         self.setHeaderLabels(["Name", "", "", ""])
         h = self.header()
         h.setStretchLastSection(False)
-        h.setSectionResizeMode(0, QHeaderView.Stretch)
-        h.setSectionResizeMode(1, QHeaderView.Fixed)
-        h.setSectionResizeMode(2, QHeaderView.Fixed)
-        h.setSectionResizeMode(3, QHeaderView.Fixed)
+        h.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        h.setSectionResizeMode(1, QHeaderView.ResizeMode.Fixed)
+        h.setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
+        h.setSectionResizeMode(3, QHeaderView.ResizeMode.Fixed)
         h.setSectionsMovable(True)
         self.setColumnWidth(0, 120)
         self.setColumnWidth(1, 18)
@@ -81,10 +81,10 @@ class OutlinerTreeWidget(QTreeWidget):
 
         # Dragging
         self.setDragEnabled(True)
-        self.setDragDropMode(QAbstractItemView.InternalMove)
-        self.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.setDragDropMode(QAbstractItemView.DragDropMode.InternalMove)
+        self.setSelectionMode(QAbstractItemView.SelectionMode.ExtendedSelection)
         # self.setSelectionMode(QAbstractItemView.MultiSelection)
-        self.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
 
         self.model_selection_changes = (set(), set())
         self.is_child_adding = 0
@@ -459,8 +459,8 @@ class OutlinerTreeWidget(QTreeWidget):
         https://stackoverflow.com/questions/8961449/pyqt-qtreewidget-iterating#8961820
         '''
         # print("match")
-        root_check = int(ROOT_FLAGS)
-        disable_check = int(DISABLE_FLAGS)
+        root_check = 60 # int(ROOT_FLAGS)
+        disable_check = 0 # int(DISABLE_FLAGS)
         if OutlineVirtualHelixItem.FILTER_NAME in filter_name_set:
             set_vh_on = True
         else:

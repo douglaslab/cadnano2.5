@@ -688,7 +688,7 @@ class DocumentController(object):
         slice_view_widget = self.win.slice_dock_widget
         path_view_widget = self.win.path_dock_widget
         if show:
-            self.win.splitDockWidget(slice_view_widget, path_view_widget, Qt.Horizontal)
+            self.win.splitDockWidget(slice_view_widget, path_view_widget, Qt.Orientation.Horizontal)
             self.win.action_slice.setChecked(True)
             self.slice_view_showing = True
             slice_view_widget.show()
@@ -713,7 +713,7 @@ class DocumentController(object):
         grid_view_widget = self.win.grid_dock_widget
         path_view_widget = self.win.path_dock_widget
         if show:
-            self.win.splitDockWidget(grid_view_widget, path_view_widget, Qt.Horizontal)
+            self.win.splitDockWidget(grid_view_widget, path_view_widget, Qt.Orientation.Horizontal)
             self.win.action_slice.setChecked(True)
             self.grid_view_showing = True
             grid_view_widget.show()

@@ -388,7 +388,7 @@ class VirtualHelixHandleItem(QGraphicsEllipseItem):
     # end def
 
     def itemChange(self, change, value):
-        """For selection changes test against QGraphicsItem.ItemSelectedChange
+        """For selection changes test against QGraphicsItem.GraphicsItemChange.ItemSelectedChange
         intercept the change instead of the has changed to enable features.
 
         Args:
@@ -396,7 +396,7 @@ class VirtualHelixHandleItem(QGraphicsEllipseItem):
             value (TYPE): Description
         """
 
-        if change == QGraphicsItem.ItemSelectedChange and self.scene():
+        if change == QGraphicsItem.GraphicsItemChange.ItemSelectedChange and self.scene():
             viewroot = self._viewroot
             current_filter_set = viewroot.selectionFilterSet()
             selection_group = viewroot.vhiHandleSelectionGroup()

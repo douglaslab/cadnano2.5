@@ -292,7 +292,7 @@ class ForcedStrandItem(QGraphicsLineItem):
         c_a.setZValue(styles.ZENDPOINTITEM)
         self._low_cap.setZValue(styles.ZENDPOINTITEM+2)
         self._high_cap.setZValue(styles.ZENDPOINTITEM+2)
-        c_a.setFlag(QGraphicsItem.ItemStacksBehindParent)
+        c_a.setFlag(QGraphicsItem.GraphicsItemFlag.ItemStacksBehindParent)
 
         self._updatePensAndBrushes()
         self.hideIt()

@@ -151,7 +151,7 @@ class CadnanoQt(QObject):
     def exec_(self):
         if hasattr(self, 'qApp'):
             self.main_event_loop = QEventLoop()
-            self.main_event_loop.exec_()
+            self.main_event_loop.exec()
 
     def destroyApp(self):
         """ Destroy the QApplication.
