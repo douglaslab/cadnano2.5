@@ -135,9 +135,9 @@ exclude_list = ['*.genbank', '*.fasta',
                 'pyqtdeploy', 'nno2stl', '*.autobreak']
 cn_packages = find_packages(exclude=exclude_list)
 
-install_requires = ['PyQt5==5.15.0',
-                    'pandas>=1.1.0',
-                    'termcolor>=1.1.0'
+install_requires = ['PyQt6',
+                    'pandas',
+                    'termcolor'
                     ]
 
 if sys.platform == 'win32':
