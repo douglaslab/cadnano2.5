@@ -29,7 +29,9 @@ from .xovercmds import CreateXoverCommand, RemoveXoverCommand
 inner1d(a, a) is equivalent to np.einsum('ik,ij->i', a, a)
 equivalent to np.sum(a*a, axis=1) but faster
 """
-from numpy.core.umath_tests import inner1d
+# from numpy.core.umath_tests import inner1d
+# Quick fix, because numpy.core.umath_tests is now deprecated
+from numpy import dot as inner1d
 
 DEFAULT_CACHE_SIZE = 20
 
