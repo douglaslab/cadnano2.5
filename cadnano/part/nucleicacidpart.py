@@ -31,7 +31,7 @@ equivalent to np.sum(a*a, axis=1) but faster
 """
 # from numpy.core.umath_tests import inner1d
 # Quick fix, because numpy.core.umath_tests is now deprecated
-from numpy import dot as inner1d
+from numpy import inner as inner1d
 
 DEFAULT_CACHE_SIZE = 20
 
