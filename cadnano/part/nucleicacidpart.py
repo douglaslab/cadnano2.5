@@ -29,9 +29,12 @@ from .xovercmds import CreateXoverCommand, RemoveXoverCommand
 inner1d(a, a) is equivalent to np.einsum('ik,ij->i', a, a)
 equivalent to np.sum(a*a, axis=1) but faster
 """
-# from numpy.core.umath_tests import inner1d
-# Quick fix, because numpy.core.umath_tests is now deprecated
-from numpy import inner as inner1d
+try:
+    import os
+    os.environ["NUMPY_EXPERIMENTAL_DTYPE_API"] = "1"
+    from numpy.core.umath_tests import inner1d
+except Exception:
+    def inner1d(u, v, out=None): return np.einsum('ij,ij->i', u, v, out=out)
 
 DEFAULT_CACHE_SIZE = 20
 
@@ -432,9 +435,9 @@ class NucleicAcidPart(Part):
         """
         if parity is None:
             return max(self._highest_even_id_num_used, self._highest_odd_id_num_used)
-        elif parity is 0:
+        elif parity == 0:
             return self._highest_even_id_num_used
-        elif parity is 1:
+        elif parity == 1:
             return self._highest_odd_id_num_used
         else:
             raise AttributeError('Invalid parity passed to getMaxIdNum:  %s' % parity)
@@ -456,9 +459,9 @@ class NucleicAcidPart(Part):
             self.recycle_bin.get(parity, {}).remove(num)
             # rebuild the heap since we removed a specific item
             heapify(self.recycle_bin.get(parity, {}))
-        if parity is 0 and self._highest_even_id_num_used < num:
+        if parity == 0 and self._highest_even_id_num_used < num:
             self._highest_even_id_num_used = num
-        elif parity is 1 and self._highest_odd_id_num_used < num:
+        elif parity == 1 and self._highest_odd_id_num_used < num:
             self._highest_odd_id_num_used = num
         self.reserved_ids.add(num)
     # end def
@@ -473,7 +476,7 @@ class NucleicAcidPart(Part):
             id_num (int): virtual helix ID number
         """
         parity = id_num % 2
-        if parity is 0:
+        if parity == 0:
             heappush(self.recycle_bin.get(0), id_num)
             self._highest_even_id_num_used = id_num-2
         else:
@@ -600,7 +603,7 @@ class NucleicAcidPart(Part):
 
     def setVirtualHelixOriginLimits(self, limits):
         # TODO[NF]:  Docstring
-        assert len(limits) is 4
+        assert len(limits) == 4
         self.origin_limits = limits[0], limits[1], limits[2], limits[3]
 
     def getVirtualHelixOriginLimits(self):
