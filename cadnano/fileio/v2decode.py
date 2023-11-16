@@ -250,11 +250,18 @@ def decode(document, obj, emit_signals=False):
                                     sum_of_insert_skip,
                                     use_undostack=False)
         # end for
-        # populate colors
+
+        # populate staple colors
         for base_idx, color_number in helix['stap_colors']:
             color = intToColorHex(color_number)
             strand = stap_strand_set.getStrand(base_idx)
             strand.oligo().applyColor(color, use_undostack=False)
+        # populate scaffold colors
+        if 'scaf_colors' in helix:
+            for base_idx, color_number in helix['scaf_colors']:
+                color = intToColorHex(color_number)
+                strand = scaf_strand_set.getStrand(base_idx)
+                strand.oligo().applyColor(color, use_undostack=False)
 
         circular_staple_oligos = part.getCircularOligos(include_scaffold=False)
         for o in circular_staple_oligos:
