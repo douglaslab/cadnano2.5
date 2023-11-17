@@ -195,7 +195,7 @@ class Document(CNObject):
         Args:
             filename (str): full path file name
         """
-        print("reading file", filename)
+        # print("reading file", filename)
         return decodeFile(filename, document=self, emit_signals=True)
     # end def
 
