@@ -245,10 +245,18 @@ def decode(document, obj, emit_signals=False):
         for base_idx in range(len(stap)):
             sum_of_insert_skip = insertions[base_idx] + skips[base_idx]
             if sum_of_insert_skip != 0:
-                strand = scaf_strand_set.getStrand(base_idx)
-                strand.addInsertion(base_idx,
-                                    sum_of_insert_skip,
-                                    use_undostack=False)
+                if scaf_strand_set.hasStrandAt(base_idx, base_idx):
+                    strand = scaf_strand_set.getStrand(base_idx)
+                    strand.addInsertion(base_idx,
+                                        sum_of_insert_skip,
+                                        use_undostack=False)
+                elif stap_strand_set.hasStrandAt(base_idx,base_idx):
+                    strand = stap_strand_set.getStrand(base_idx)
+                    strand.addInsertion(base_idx,
+                                        sum_of_insert_skip,
+                                        use_undostack=False)
+                else:
+                    print(f"Error decoding insert/skip ({sum_of_insert_skip}) at {vh_num}[{base_idx}]")
         # end for
 
         # populate staple colors
