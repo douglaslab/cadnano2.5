@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import warnings
 
@@ -31,3 +32,27 @@ def test_v3_dynamic_scamz_property_imports_without_nested_undo():
         assert part is not None
         assert 'scamZ' in part.vh_properties.columns
         assert part.vh_properties['eulerZ'].dtype.kind == 'f'
+
+
+def test_v2_virtual_helix_id_beyond_initial_dataframe_imports(tmp_path):
+    bases = 32
+    empty_connectivity = [[-1, -1, -1, -1] for _ in range(bases)]
+    payload = {
+        'name': 'large-virtual-helix-id',
+        'vstrands': [{
+            'row': 0,
+            'col': 0,
+            'num': 512,
+            'scaf': empty_connectivity,
+            'stap': empty_connectivity,
+            'loop': [0] * bases,
+            'skip': [0] * bases,
+            'stap_colors': [],
+        }],
+    }
+    path = tmp_path / 'large-id.json'
+    path.write_text(json.dumps(payload))
+
+    document = decodeFile(str(path), Document())
+
+    assert document.activePart().getVirtualHelix(512) is not None

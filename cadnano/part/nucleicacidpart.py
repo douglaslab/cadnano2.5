@@ -1092,8 +1092,9 @@ class NucleicAcidPart(Part):
         # 2. Assign origin on creation, resizing as needed
         len_origin_pts = len(self._origin_pts)
         if id_num >= len_origin_pts:
-            diff = id_num - len_origin_pts
-            number_of_new_elements = math.ceil(diff / DEFAULT_SIZE)*DEFAULT_SIZE
+            required_rows = id_num - len_origin_pts + 1
+            number_of_new_elements = math.ceil(
+                required_rows / DEFAULT_SIZE) * DEFAULT_SIZE
             total_rows = len_origin_pts + number_of_new_elements
             # resize adding zeros
             self._origin_pts.resize((total_rows, 2))
@@ -1102,9 +1103,11 @@ class NucleicAcidPart(Part):
             self.directions.resize((total_rows, 3))
             self.directions[len_origin_pts:] = 0  # unnecessary as resize fills with zeros
 
-            self.vh_properties = self.vh_properties.append(_defaultDataFrame(number_of_new_elements,
-                                                           self._group_properties['grid_type']),
-                                                           ignore_index=True)
+            self.vh_properties = pd.concat(
+                [self.vh_properties,
+                 _defaultDataFrame(number_of_new_elements,
+                                   self._group_properties['grid_type'])],
+                ignore_index=True)
 
         self._origin_pts[id_num] = origin[:2]
         new_x, new_y = origin[:2]
