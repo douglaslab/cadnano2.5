@@ -1349,6 +1349,16 @@ class NucleicAcidPart(Part):
                     print('Validation failed: attempted to set %s to %s' % (key,
                                                                             values_list[index]))
 
+                # Several legacy defaults (for example ``eulerZ``) are
+                # integral even though the property is allowed to be
+                # fractional.  Pandas therefore infers an integer column for
+                # the initial table.  Explicitly promote it before assigning
+                # imported v3 values; recent pandas releases reject the
+                # implicit integer-to-float upcast.
+                if (key in self.vh_properties.columns and
+                        not pd.api.types.is_float_dtype(self.vh_properties[key].dtype)):
+                    self.vh_properties[key] = self.vh_properties[key].astype(float)
+
         for index, key in enumerate(keys_list):
             try:
                 self.vh_properties.loc[id_num, (key)] = values_list[index]
