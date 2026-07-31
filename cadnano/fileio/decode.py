@@ -15,7 +15,16 @@ def decodeFile(filename, document=None, emit_signals=False):
         from cadnano.document import Document
         document = Document()
     if 'format' not in nno_dict:
-        if os.path.splitext(filename)[1] == '.c25':
+        vstrands = nno_dict.get('vstrands')
+        first_vstrand = (vstrands[0]
+                         if isinstance(vstrands, list) and vstrands else {})
+        is_c25 = (
+            os.path.splitext(filename)[1] == '.c25'
+            or (isinstance(first_vstrand, dict)
+                and 'fwd_ss' in first_vstrand
+                and 'rev_ss' in first_vstrand)
+        )
+        if is_c25:
             c25decode.decode(document, nno_dict, emit_signals=emit_signals)
         else:
             v2decode.decode(document, nno_dict, emit_signals=emit_signals)

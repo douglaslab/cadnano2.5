@@ -61,9 +61,14 @@ class CreateVirtualHelixCommand(UndoCommand):
         else:
             neighbors = self.neighbors
         if self.keys is not None:
+            # This command already owns the undo operation.  Nesting a
+            # SetVHPropertyCommand asks for old values before v3-only dynamic
+            # columns (for example scamZ) exist in the DataFrame.  Bulk import
+            # should set the serialized properties directly instead.
             part.setVirtualHelixProperties(id_num,
                                            self.keys, self.values,
-                                           safe=False)
+                                           safe=False,
+                                           use_undostack=False)
             part.resetCoordinates(id_num)
         part.partVirtualHelixAddedSignal.emit(part, id_num, vh, neighbors)
         # print('Done redoing create of %s' % self.id_num)
