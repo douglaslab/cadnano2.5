@@ -668,7 +668,7 @@ class GridNucleicAcidPartItem(QAbstractPartItem):
 
         part_pt_tuple = self.getModelPos(pt)
 
-        mod = Qt.MetaModifier
+        mod = Qt.KeyboardModifier.MetaModifier
         if not (event.modifiers() & mod):
             pass
 

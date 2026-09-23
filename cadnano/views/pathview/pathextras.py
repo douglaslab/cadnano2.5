@@ -945,7 +945,7 @@ class PathWorkplaneItem(QGraphicsRectItem):
         """
         self._high_drag_bound = self._model_part.getProperty('max_vhelix_length') - self.width()
         if event.modifiers() & Qt.KeyboardModifier.ShiftModifier or self._moving_via_handle:
-            self.setCursor(Qt.ClosedHandCursor)
+            self.setCursor(Qt.CursorShape.ClosedHandCursor)
             self._start_idx_low = self._idx_low
             self._start_idx_high = self._idx_high
             self._delta = 0

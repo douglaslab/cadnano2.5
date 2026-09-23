@@ -23,6 +23,7 @@ def decode(document, obj, emit_signals=False):
         grid_type = GridType.HONEYCOMB
     else:
         raise IOError("error decoding number of bases")
+    print(f"v2decode: num_bases={num_bases}, lattice_type={lattice_type}, grid_type={grid_type}")
 
     part = None
     # DETERMINE MAX ROW,COL
@@ -95,6 +96,8 @@ def decode(document, obj, emit_signals=False):
     for vh_num in sorted(vh_num_to_coord.keys()):
         row, col = vh_num_to_coord[vh_num]
         x, y = doLattice(radius, row, col)
+        if vh_num < 3:
+            print(f"v2decode: createVH vh={vh_num} row={row} col={col} x={x:.4f} y={y:.4f}")
         part.createVirtualHelix(x, y, 0., num_bases,
                                 id_num=vh_num, use_undostack=False)
     # zoom to fit
@@ -263,13 +266,15 @@ def decode(document, obj, emit_signals=False):
         for base_idx, color_number in helix['stap_colors']:
             color = intToColorHex(color_number)
             strand = stap_strand_set.getStrand(base_idx)
-            strand.oligo().applyColor(color, use_undostack=False)
+            if strand is not None:
+                strand.oligo().applyColor(color, use_undostack=False)
         # populate scaffold colors
         if 'scaf_colors' in helix:
             for base_idx, color_number in helix['scaf_colors']:
                 color = intToColorHex(color_number)
                 strand = scaf_strand_set.getStrand(base_idx)
-                strand.oligo().applyColor(color, use_undostack=False)
+                if strand is not None:
+                    strand.oligo().applyColor(color, use_undostack=False)
 
         circular_staple_oligos = part.getCircularOligos(include_scaffold=False)
         for o in circular_staple_oligos:

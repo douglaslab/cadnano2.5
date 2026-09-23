@@ -353,7 +353,7 @@ class InsertionLabel(QGraphicsTextItem):
     # end class
 
     def event(self, event):
-        if event.type() == QEvent.KeyPress and event.key() == Qt.Key.Key_Tab:
+        if event.type() == QEvent.Type.KeyPress and event.key() == Qt.Key.Key_Tab:
             # print("tab pressed")
             return True
         return QGraphicsTextItem.event(self, event)

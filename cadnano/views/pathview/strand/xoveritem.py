@@ -588,7 +588,7 @@ class XoverItem(QGraphicsPathItem):
                 print("Accepter xoveritem")
                 event.setAccepted(True)
                 selection_group = viewroot.strandItemSelectionGroup()
-                mod = Qt.MetaModifier
+                mod = Qt.KeyboardModifier.MetaModifier
                 if not (event.modifiers() & mod):
                     selection_group.clearSelection(False)
                 selection_group.setSelectionLock(selection_group)

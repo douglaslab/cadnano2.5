@@ -98,7 +98,7 @@ class CustomQGraphicsView(QGraphicsView):
             # self.setupGL()
             self.gl = self.glwidget.context().versionFunctions()
             self.setViewport(self.glwidget)
-            self.setViewportUpdateMode(QGraphicsView.FullViewportUpdate)
+            self.setViewportUpdateMode(QGraphicsView.ViewportUpdateMode.FullViewportUpdate)
             # self.resetGL()
         else:
             self.is_GL = False

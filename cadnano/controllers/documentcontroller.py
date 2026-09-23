@@ -465,9 +465,9 @@ class DocumentController(object):
                               "%s - Save As" % QApplication.applicationName(),
                               directory,
                               "%s (*.svg)" % QApplication.applicationName())
-        fdialog.setAcceptMode(QFileDialog.AcceptSave)
-        fdialog.setWindowFlags(Qt.Sheet)
-        fdialog.setWindowModality(Qt.WindowModal)
+        fdialog.setAcceptMode(QFileDialog.AcceptMode.AcceptSave)
+        fdialog.setWindowFlags(Qt.WindowType.Sheet)
+        fdialog.setWindowModality(Qt.WindowModality.WindowModal)
         self.svgsavedialog = fdialog
         self.svgsavedialog.filesSelected.connect(self.saveSVGDialogCallback)
         fdialog.open()
@@ -565,9 +565,9 @@ class DocumentController(object):
                                   "%s - Export As" % QApplication.applicationName(),
                                   directory,
                                   "(*.txt)")
-            fdialog.setAcceptMode(QFileDialog.AcceptSave)
-            fdialog.setWindowFlags(Qt.Sheet)
-            fdialog.setWindowModality(Qt.WindowModal)
+            fdialog.setAcceptMode(QFileDialog.AcceptMode.AcceptSave)
+            fdialog.setWindowFlags(Qt.WindowType.Sheet)
+            fdialog.setWindowModality(Qt.WindowModality.WindowModal)
             self.saveStaplesDialog = fdialog
             self.saveStaplesDialog.filesSelected.connect(self.exportStaplesCallback)
             fdialog.open()
@@ -776,9 +776,9 @@ class DocumentController(object):
                                   "%s - Save As" % QApplication.applicationName(),
                                   directory,
                                   "%s (*.json)" % QApplication.applicationName())
-            fdialog.setAcceptMode(QFileDialog.AcceptSave)
-            fdialog.setWindowFlags(Qt.Sheet)
-            fdialog.setWindowModality(Qt.WindowModal)
+            fdialog.setAcceptMode(QFileDialog.AcceptMode.AcceptSave)
+            fdialog.setWindowFlags(Qt.WindowType.Sheet)
+            fdialog.setWindowModality(Qt.WindowModality.WindowModal)
             self.filesavedialog = fdialog
             self.filesavedialog.filesSelected.connect(self.saveFileDialogCallback)
             fdialog.open()
@@ -969,9 +969,9 @@ class DocumentController(object):
                                   "Open Document",
                                   path,
                                   "cadnano1 / cadnano2 Files (*.nno *.json *.c25)")
-            fdialog.setAcceptMode(QFileDialog.AcceptOpen)
-            fdialog.setWindowFlags(Qt.Sheet)
-            fdialog.setWindowModality(Qt.WindowModal)
+            fdialog.setAcceptMode(QFileDialog.AcceptMode.AcceptOpen)
+            fdialog.setWindowFlags(Qt.WindowType.Sheet)
+            fdialog.setWindowModality(Qt.WindowModality.WindowModal)
             self.fileopendialog = fdialog
             self.fileopendialog.filesSelected.connect(self.openAfterMaybeSaveCallback)
             fdialog.open()
@@ -989,15 +989,15 @@ class DocumentController(object):
         if app().dontAskAndJustDiscardUnsavedChanges:
             return SAVE_DIALOG_OPTIONS['DISCARD']
         if not self.undoStack().isClean():    # document dirty?
-            savebox = QMessageBox(QMessageBox.Warning, "Application",
+            savebox = QMessageBox(QMessageBox.Icon.Warning, "Application",
                                   "The document has been modified.\nDo you want to save your changes?",
-                                  QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel,
+                                  QMessageBox.StandardButton.Save | QMessageBox.StandardButton.Discard | QMessageBox.StandardButton.Cancel,
                                   self.win,
-                                  Qt.Dialog | Qt.MSWindowsFixedSizeDialogHint | Qt.Sheet)
-            savebox.setWindowModality(Qt.WindowModal)
-            save = savebox.button(QMessageBox.Save)
-            discard = savebox.button(QMessageBox.Discard)
-            cancel = savebox.button(QMessageBox.Cancel)
+                                  Qt.WindowType.Dialog | Qt.WindowType.MSWindowsFixedSizeDialogHint | Qt.WindowType.Sheet)
+            savebox.setWindowModality(Qt.WindowModality.WindowModal)
+            save = savebox.button(QMessageBox.StandardButton.Save)
+            discard = savebox.button(QMessageBox.StandardButton.Discard)
+            cancel = savebox.button(QMessageBox.StandardButton.Cancel)
             savebox.setDefaultButton(save)
             savebox.setEscapeButton(cancel)
             save.setShortcut("Ctrl+S")
@@ -1005,11 +1005,11 @@ class DocumentController(object):
             cancel.setShortcut(QKeySequence("C,Ctrl+C,.,Ctrl+."))
             ret = savebox.exec_()
             del savebox  # manual garbage collection to prevent hang (in osx)
-            if ret == QMessageBox.Save:
+            if ret == QMessageBox.StandardButton.Save:
                 self.exit_when_done = exit_when_done
                 self.actionSaveAsSlot()
                 return SAVE_DIALOG_OPTIONS['SAVE']
-            elif ret == QMessageBox.Cancel:
+            elif ret == QMessageBox.StandardButton.Cancel:
                 return SAVE_DIALOG_OPTIONS['CANCEL']
         return SAVE_DIALOG_OPTIONS['DISCARD']
 
@@ -1021,14 +1021,14 @@ class DocumentController(object):
         try:
             self._document.writeToFile(filename)
         except Exception:
-            flags = Qt.Dialog | Qt.MSWindowsFixedSizeDialogHint | Qt.Sheet
-            errorbox = QMessageBox(QMessageBox.Critical,
+            flags = Qt.WindowType.Dialog | Qt.WindowType.MSWindowsFixedSizeDialogHint | Qt.WindowType.Sheet
+            errorbox = QMessageBox(QMessageBox.Icon.Critical,
                                    "cadnano",
                                    "Could not write to '%s'." % filename,
-                                   QMessageBox.Ok,
+                                   QMessageBox.StandardButton.Ok,
                                    self.win,
                                    flags)
-            errorbox.setWindowModality(Qt.WindowModal)
+            errorbox.setWindowModality(Qt.WindowModality.WindowModal)
             errorbox.open()
             raise
             return False

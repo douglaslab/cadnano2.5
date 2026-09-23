@@ -275,7 +275,7 @@ class HandleItem(QGraphicsRectItem):
             event.setAccepted(True)  # don't propagate
             return
         else:
-            self.setCursor(Qt.ClosedHandCursor)
+            self.setCursor(Qt.CursorShape.ClosedHandCursor)
             parent = self.parentItem()
             self._group.is_dragging = True
             self.event_start_position = event.pos()

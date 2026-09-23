@@ -725,7 +725,7 @@ class StrandItem(QGraphicsLineItem):
         current_filter_set = self._viewroot.selectionFilterSet()
         if all(f in current_filter_set for f in self.strandFilter()) and self.FILTER_NAME in current_filter_set:
             selection_group = self._viewroot.strandItemSelectionGroup()
-            mod = Qt.MetaModifier
+            mod = Qt.KeyboardModifier.MetaModifier
             if not (event.modifiers() & mod):
                 selection_group.clearSelection(False)
             selection_group.setSelectionLock(selection_group)
